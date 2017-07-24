@@ -17,6 +17,9 @@
   },
   "homepage": "https://github.com/codypearce/simple-product-store#readme",
   "dependencies": {
-    "express": "^4.15.3"
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "method-override": "^2.3.9",
+    "morgan": "^1.8.2"
   }
 }
