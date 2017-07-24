@@ -1,0 +1,25 @@
+
+const express = require('express'),
+      app = express(),
+      methodOverride = require('method-override'),
+      bodyParser = require('body-parser'),
+      morgan = require('morgan');
+
+app.use(express.static(__dirname + '/client'));
+
+
+app.use(morgan('dev'));
+app.use(bodyParser.urlencoded({'extended': 'true'}));
+app.use(bodyParser.json());
+app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
+app.use(methodOverride());
+
+app.set('view engine', 'pug');
+
+// routes
+require('./api/routes')(app);
+
+const port = 3000;
+app.listen(port);
+// app.listen(process.env.PORT, process.env.IP);
+console.log('Now Listening on port: ' + port);
