@@ -1,9 +1,13 @@
-
 const express = require('express'),
       app = express(),
       methodOverride = require('method-override'),
       bodyParser = require('body-parser'),
-      morgan = require('morgan');
+      morgan = require('morgan'),
+      mongoose = require('mongoose');
+
+
+mongoose.connect('mongodb://localhost/simple-product-store');
+
 
 app.use(express.static(__dirname + '/client'));
 
