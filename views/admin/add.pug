@@ -1,4 +1,23 @@
 extends ./layout
 
 block content
-	h3 Add
+	h3(class="mb-4") Add Product
+	form
+		.row
+
+		.form-group
+			input.form-control(type="text", aria-describedby="Title", placeholder="Title")
+		.form-group
+			input.form-control(type="text", aria-describedby="slug", placeholder="Slug")
+		.form-group
+			input.form-control(type="number", aria-describedby="price", placeholder="Price")
+		.form-group
+			input.form-control(type="text", aria-describedby="link", placeholder="Link")
+		.form-group
+			input.form-control(type="text", aria-describedby="img", placeholder="Image")
+		.form-group
+			label Image
+			input.form-control-file(type="file")
+		.form-group
+			label Description
+			textarea(class="form-control" rows=3)
