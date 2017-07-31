@@ -2,7 +2,7 @@ extends ./layout
 
 block content
 	h3(class="mb-4") Add Product
-	form
+	form(action="/products" method="post")
 		.row
 			.col-6
 				.form-group
@@ -28,3 +28,4 @@ block content
 		.form-group
 			label Description
 			textarea(class="form-control" rows=5)
+		button(class="btn btn-primary" type=submit) Add Product
