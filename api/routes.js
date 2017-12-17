@@ -31,7 +31,12 @@ module.exports = function(app) {
         }, function(err, todo) {
             if (err)
                 res.send(err);
-            res.render('index')
+                Product.find(function(err, products) {
+                    console.log('test')
+                    res.render('index', {
+                        products: products
+                    })
+                })
         });
 
     })
