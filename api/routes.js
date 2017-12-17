@@ -5,7 +5,6 @@ module.exports = function(app) {
 
     app.get('/', function(req, res) {
         Product.find(function(err, products) {
-            console.log('test')
             res.render('index', {
                 products: products
             })
@@ -14,13 +13,18 @@ module.exports = function(app) {
 
 
 	app.get('/admin', function(req, res) {
-    	res.render('admin/index');
+        Product.find(function(err, products) {
+            res.render('admin/index', {
+                products: products
+            })
+        })
     });
+
     app.get('/admin/product/add', function(req, res) {
     	res.render('admin/add');
     });
+
     app.post('/products', function(req, res) {
-        console.log(req.body)
         Product.create({
             title: req.body.title,
             slug: req.body.slug,
@@ -32,7 +36,6 @@ module.exports = function(app) {
             if (err)
                 res.send(err);
                 Product.find(function(err, products) {
-                    console.log('test')
                     res.render('index', {
                         products: products
                     })
