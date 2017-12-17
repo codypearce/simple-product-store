@@ -6,26 +6,26 @@ block content
 		.row
 			.col-6
 				.form-group
-					input.form-control(type="text", aria-describedby="Title", placeholder="Title")
+					input.form-control(type="text", aria-describedby="Title", placeholder="Title" name="title")
 			.col-6
 				.form-group
-					input.form-control(type="text", aria-describedby="slug", placeholder="Slug")
+					input.form-control(type="text", aria-describedby="slug", placeholder="Slug" name="slug")
 		.row
 			.col-6
 				.form-group
-					input.form-control(type="number", aria-describedby="price", placeholder="Price")
+					input.form-control(type="number", aria-describedby="price", placeholder="Price" name="price")
 			.col-6
 				.form-group
-					input.form-control(type="text", aria-describedby="link", placeholder="Link")
+					input.form-control(type="text", aria-describedby="link", placeholder="Link" name="link")
 		.row
 			.col-6
 				.form-group
-					input.form-control(type="text", aria-describedby="img", placeholder="Image")
+					input.form-control(type="text", aria-describedby="img", placeholder="Image" name="link")
 			.col-6
 				.form-group
 					label Image
 					input.form-control-file(type="file")
 		.form-group
 			label Description
-			textarea(class="form-control" rows=5)
+			textarea(class="form-control" rows=5 name="description")
 		button(class="btn btn-primary" type=submit) Add Product
