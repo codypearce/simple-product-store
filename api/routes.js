@@ -1,8 +1,15 @@
 var Product = require('./models/product');
 
 module.exports = function(app) {
+
+
     app.get('/', function(req, res) {
-        res.render('index');
+        Product.find(function(err, products) {
+            console.log('test')
+            res.render('index', {
+                products: products
+            })
+        })
     });
 
 
@@ -20,7 +27,7 @@ module.exports = function(app) {
             price: req.body.price,
             link: req.body.link,
             image: req.body.image,
-            description: req.body.description 
+            description: req.body.description
         }, function(err, todo) {
             if (err)
                 res.send(err);

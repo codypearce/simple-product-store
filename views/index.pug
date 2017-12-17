@@ -17,11 +17,7 @@ html
 		main.mt-5
 			.container
 				.row
-					.col-4
-						.product-box
-					.col-4
-						.product-box
-					.col-4
-						.product-box
-
-
+					each product in products
+						.col-4
+							.product-box
+							p #{product.title}
