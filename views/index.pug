@@ -16,8 +16,12 @@ html
 					a(href="/admin") Admin
 		main.mt-5
 			.container
-				.row
-					each product in products
-						.col-4
-							.product-box
-							p #{product.title}
+				if products.length > 0
+					.row
+						each product in products
+							.col-4
+								.product-box
+								p #{product.title}
+				else
+					div(class="d-flex justify-content-center align-items-center")
+						p(class="text-muted") Sorry no products

@@ -2,12 +2,14 @@ extends ./layout
 
 block content
 	h3 Products
-
-	each product in products
-
-		div(class="my-4")
-			div(class="d-flex flex-row align-items-center")
-				h2 #{product.title}
-				span(class="ml-3") $#{product.price}
-			div
-				p #{product.description}
+	if products.length > 0
+		each product in products
+			div(class="my-4")
+				div(class="d-flex flex-row align-items-center")
+					h2 #{product.title}
+					span(class="ml-3") $#{product.price}
+				div
+					p #{product.description}
+	else
+		div(class="d-flex justify-content-center align-items-center")
+			p(class="text-muted") You don't have any products!
