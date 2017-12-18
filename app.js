@@ -6,7 +6,7 @@ const express = require('express'),
       mongoose = require('mongoose');
 
 
-mongoose.connect('mongodb://localhost/simple-product-store');
+mongoose.connection.openUri('mongodb://localhost/simple-product-store');
 
 
 app.use(express.static(__dirname + '/client'));
