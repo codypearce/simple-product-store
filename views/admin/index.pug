@@ -4,12 +4,15 @@ block content
 	h3 Products
 	if products.length > 0
 		each product in products
-			div(class="my-4")
-				div(class="d-flex flex-row align-items-center")
-					h2 #{product.title}
-					span(class="ml-3") $#{product.price}
-				div
-					p #{product.description}
+			div(class="my-4 d-flex flex-row justify-content-between")
+				div(class="")
+					div(class="d-flex flex-row align-items-center")
+						h2 #{product.title}
+						span(class="ml-3") $#{product.price}
+					div
+						p #{product.description}
+				div(class="")
+					a(href="/admin/product/delete/" + product._id class="btn btn-danger") Delete
 	else
 		div(class="d-flex justify-content-center align-items-center")
 			p(class="text-muted") You don't have any products!

@@ -42,8 +42,17 @@ module.exports = function(app) {
                     })
                 })
         });
-
     })
+
+    app.get('/admin/product/delete/:productID', function(req, res) {
+        Product.remove({
+            _id: req.params.productID
+        },function(err, products) {
+            res.render('admin/index', {
+                products: products
+            })
+        })
+    });
 
 
     app.get('*', function(req, res) {
