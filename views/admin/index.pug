@@ -1,5 +1,9 @@
 extends ./layout
 
+block links
+	a(href="/admin/product/add" class="btn btn-primary") Add
+	a(href="/" class="ml-3" class="btn btn-secondary") Back to Site
+
 block content
 	h3 Products
 	if products.length > 0

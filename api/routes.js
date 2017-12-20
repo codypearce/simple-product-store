@@ -37,7 +37,7 @@ module.exports = function(app) {
             if (err)
                 res.send(err);
                 Product.find(function(err, products) {
-                    res.render('index', {
+                    res.render('admin/index', {
                         products: products
                     })
                 })
