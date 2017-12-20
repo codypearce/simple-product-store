@@ -1,11 +1,12 @@
 extends ./layout
 
 block links
-	a(href="/admin/product/add" class="btn btn-primary") Add
-	a(href="/" class="ml-3" class="btn btn-secondary") Back to Site
+	a(href="/" class="link") Back to Site
 
 block content
-	h3 Products
+	div(class="d-flex justify-content-between align-content-baseline mb-5")
+		h3 Products
+		a(href="/admin/product/add" class="btn btn-primary") Add
 	if products.length > 0
 		each product in products
 			div(class="my-4 d-flex flex-row justify-content-between")
