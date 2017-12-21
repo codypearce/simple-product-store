@@ -19,8 +19,11 @@ html
 					.row
 						each product in products
 							.col-4
-								.product-box
-								p #{product.title}
+								a(href="/products/" + product.slug).resetAnchor
+									.product-box
+									.d-flex.justify-content-between.align-items-center.mt-2
+										span #{product.title}
+										span.sub-text $#{product.price}
 				else
 					div(class="d-flex justify-content-center align-items-center")
 						p(class="text-muted") Sorry no products
