@@ -15,7 +15,7 @@ module.exports = function(app) {
         }, (err, product) => {
             if(err) res.send(err)
             console.log(product)
-            res.render('product', {product: product})
+            res.render('product', {product: product[0]})
         })
     });
 
