@@ -5,12 +5,20 @@ module.exports = function(app) {
 
     app.get('/', function(req, res) {
         Product.find(function(err, products) {
-            res.render('index', {
-                products: products
-            })
-            console.log(products)
+            res.render('index', { products: products })
         })
     });
+
+    app.get('/products/:slug', (req,res) => {
+        Product.find({
+            slug: req.params.slug
+        }, (err, product) => {
+            if(err) res.send(err)
+            console.log(product)
+            res.render('product', {product: product})
+        })
+    });
+
 
 
 	app.get('/admin', function(req, res) {
@@ -33,14 +41,13 @@ module.exports = function(app) {
             link: req.body.link,
             image: req.body.image,
             description: req.body.description
-        }, function(err, todo) {
-            if (err)
-                res.send(err);
-                Product.find(function(err, products) {
-                    res.render('admin/index', {
-                        products: products
-                    })
-                })
+        }, function(err, product) {
+
+            if (err) res.send(err);
+
+            Product.find(function(err, products) {
+                res.render('admin/index', { products: products })
+            })
         });
     })
 
