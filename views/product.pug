@@ -12,3 +12,12 @@ block content
 			.row
 				.col-6
 					.product-box
+				.col-6
+					.row.d-flex.justify-content-between.align-items-center
+						h3 Price
+						h2 $#{product.price}
+					.row.mt-3
+						a(class="btn btn-primary" href=product.link) Buy
+			.row.mt-5
+				.col-12
+					p #{product.description}
