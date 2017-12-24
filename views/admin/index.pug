@@ -18,6 +18,7 @@ block content
 					div
 						p #{product.description}
 				div(class="")
+					a(href="/admin/product/edit/" + product._id class="btn btn-info") Edit
 					a(href="/admin/product/delete/" + product._id class="btn btn-danger") Delete
 	else
 		div(class="d-flex justify-content-center align-items-center")

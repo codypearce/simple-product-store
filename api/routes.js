@@ -14,7 +14,7 @@ module.exports = function(app) {
             slug: req.params.slug
         }, (err, product) => {
             if(err) res.send(err)
-            console.log(product)
+
             res.render('product', {product: product[0]})
         })
     });
@@ -33,13 +33,23 @@ module.exports = function(app) {
     	res.render('admin/add');
     });
 
+    app.get('/admin/product/edit/:productID', (req,res) => {
+        Product.find({
+            id: req.params.productID
+        }, (err, product) => {
+            if(err) res.send(err)
+
+            res.render('admin/edit', {product: product})
+        })
+    });
+
     app.post('/products', function(req, res) {
         Product.create({
             title: req.body.title,
             slug: req.body.slug,
             price: req.body.price,
             link: req.body.link,
-            image: req.body.image,
+            imgL: req.body.image,
             description: req.body.description
         }, function(err, product) {
 

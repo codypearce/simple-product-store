@@ -5,7 +5,7 @@ var productSchema = new Schema ({
     title: String,
     description: String,
     slug: {type: String, unique: true, required: true},
-    img: String,
+    imgLink: String,
     price: Number,
     link: String,
 },{
