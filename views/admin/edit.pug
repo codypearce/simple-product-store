@@ -12,23 +12,23 @@ block content
 					input.form-control(type="text", aria-describedby="Title", placeholder="Title" name="title" value=product.title)
 			.col-6
 				.form-group
-					input.form-control(type="text", aria-describedby="slug", placeholder="Slug" name="slug")
+					input.form-control(type="text", aria-describedby="slug", placeholder="Slug" name="slug" value=product.slug)
 		.row
 			.col-6
 				.form-group
-					input.form-control(type="number", aria-describedby="price", placeholder="Price" name="price" )
+					input.form-control(type="number", aria-describedby="price", placeholder="Price" name="price" value=product.price)
 			.col-6
 				.form-group
-					input.form-control(type="text", aria-describedby="link", placeholder="Link" name="link")
+					input.form-control(type="text", aria-describedby="link", placeholder="Link" name="link" value=product.link)
 		.row
 			.col-6
 				.form-group
-					input.form-control(type="text", aria-describedby="img", placeholder="Image" name="imgLink")
+					input.form-control(type="text", aria-describedby="img", placeholder="Image" name="imgLink" value=product.imgLink)
 			.col-6
 				.form-group
 					label Image
 					input.form-control-file(type="file")
 		.form-group
 			label Description
-			textarea(class="form-control" rows=5 name="description")
+			textarea(class="form-control" rows=5 name="description") #{product.description}
 		button(class="btn btn-primary" type=submit) Add Product

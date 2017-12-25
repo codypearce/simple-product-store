@@ -50,7 +50,7 @@ module.exports = function(app) {
             slug: req.body.slug,
             price: req.body.price,
             link: req.body.link,
-            imgL: req.body.image,
+            imgLink: req.body.imgLink,
             description: req.body.description
         }, function(err, product) {
 
