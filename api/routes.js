@@ -35,11 +35,12 @@ module.exports = function(app) {
 
     app.get('/admin/product/edit/:productID', (req,res) => {
         Product.find({
-            id: req.params.productID
+            _id: req.params.productID
         }, (err, product) => {
             if(err) res.send(err)
 
-            res.render('admin/edit', {product: product})
+            console.log(product)
+            res.render('admin/edit', {product: product[0]})
         })
     });
 
