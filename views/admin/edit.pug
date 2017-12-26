@@ -5,7 +5,7 @@ block links
 	
 block content
 	h3(class="mb-4") Edit Product
-	form(action="/products" method="post")
+	form(action="/admin/product/edit/" + product._id method="post")
 		.row
 			.col-6
 				.form-group
@@ -31,4 +31,4 @@ block content
 		.form-group
 			label Description
 			textarea(class="form-control" rows=5 name="description") #{product.description}
-		button(class="btn btn-primary" type=submit) Add Product
+		button(class="btn btn-primary" type=submit) Save

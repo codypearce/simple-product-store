@@ -59,6 +59,24 @@ module.exports = function(app) {
         });
     })
 
+    app.post('/admin/product/edit/:productID', function(req, res) {
+        Product.update({_id: req.params.productID}, {
+            title: req.body.title,
+            slug: req.body.slug,
+            price: req.body.price,
+            link: req.body.link,
+            imgLink: req.body.imgLink,
+            description: req.body.description
+        }, function(err, product) {
+
+            if (err) res.send(err);
+
+            Product.find(function(err, products) {
+                res.render('admin/index', { products: products })
+            })
+        });
+    })
+
 
     app.get('/admin/product/delete/:productID', function(req, res) {
         Product.remove({
