@@ -34,13 +34,10 @@ module.exports = function(app) {
     });
 
     app.get('/admin/product/edit/:productID', (req,res) => {
-        Product.find({
-            _id: req.params.productID
-        }, (err, product) => {
+        Product.findById(req.params.productID, (err, product) => {
             if(err) res.send(err)
 
-            console.log(product)
-            res.render('admin/edit', {product: product[0]})
+            res.render('admin/edit', {product: product})
         })
     });
 
@@ -61,6 +58,7 @@ module.exports = function(app) {
             })
         });
     })
+
 
     app.get('/admin/product/delete/:productID', function(req, res) {
         Product.remove({
