@@ -23,11 +23,7 @@ module.exports = function(app) {
 
 	app.get('/admin', function(req, res) {
         Product.find(function(err, products) {
-            products.forEach(function(product) {
-                if(product.description.length > 100) {
-                    product.description = product.description.substring(0, 100).trim() + '...';
-                }
-            })
+            limitText(products, 100)
             res.render('admin/index', {
                 products: products
             })
@@ -97,4 +93,12 @@ module.exports = function(app) {
     app.get('*', function(req, res) {
         res.render('error');
     });
+}
+
+function limitText(arr, amount) {
+    arr.forEach(function(product) {
+        if(product.description.length > amount) {
+            product.description = product.description.substring(0, amount).trim() + '...';
+        }
+    })
 }
