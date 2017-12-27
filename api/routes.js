@@ -23,6 +23,11 @@ module.exports = function(app) {
 
 	app.get('/admin', function(req, res) {
         Product.find(function(err, products) {
+            products.forEach(function(product) {
+                if(product.description.length > 100) {
+                    product.description = product.description.substring(0, 100).trim() + '...';
+                }
+            })
             res.render('admin/index', {
                 products: products
             })
