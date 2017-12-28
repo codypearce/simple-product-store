@@ -10,23 +10,6 @@ router.get('/', function(req, res) {
     })
 });
 
-router.post('/products', function(req, res) {
-    Product.create({
-        title: req.body.title,
-        slug: req.body.slug,
-        price: req.body.price,
-        link: req.body.link,
-        imgLink: req.body.imgLink,
-        description: req.body.description
-    }, function(err, product) {
-
-        if (err) res.send(err);
-
-        Product.find(function(err, products) {
-            res.render('admin/index', { products: products })
-        })
-    });
-})
 
 router.get('/products/:slug', (req,res) => {
     Product.find({
