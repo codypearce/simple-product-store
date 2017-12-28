@@ -21,7 +21,7 @@ app.use(methodOverride());
 app.set('view engine', 'pug');
 
 // routes
-require('./api/routes')(app);
+app.use(require('./api/routes'))
 
 const port = 3000;
 app.listen(port);
