@@ -26,7 +26,10 @@ block content
 					label Image
 					input.form-control-file(type="file" name="imageUpload" id="imageUpload")
 			.col-6
-				img(src='/productImages/'+product.imgLink class="admin_productImg")
+				if product.imgLink
+					img(src='/productImages/'+product.imgLink class="admin_productImg")
+				else
+					p No product image found
 		.form-group
 			label Description
 			textarea(class="form-control" rows=5 name="description") #{product.description}
