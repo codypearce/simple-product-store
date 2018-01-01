@@ -82,21 +82,30 @@ router.get('/product/edit/:productID', (req,res) => {
 });
 
 router.post('/product/edit/:productID', function(req, res) {
-    Product.update({_id: req.params.productID}, {
-        title: req.body.title,
-        slug: req.body.slug,
-        price: req.body.price,
-        link: req.body.link,
-        imgLink: req.body.imgLink,
-        description: req.body.description
-    }, function(err, product) {
+    let imgName;
+    upload(req, res, (err) => {
+        if(err) {
+            res.send(err)
+        } else {
+            imgName = req.file.filename;
+            Product.update({_id: req.params.productID}, {
+                title: req.body.title,
+                slug: req.body.slug,
+                price: req.body.price,
+                link: req.body.link,
+                imgLink: req.body.imgLink,
+                description: req.body.description
+            }, function(err, product) {
 
-        if (err) res.send(err);
+                if (err) res.send(err);
 
-        Product.find(function(err, products) {
-            res.render('admin/index', { products: products })
-        })
-    });
+                Product.find(function(err, products) {
+                    res.render('admin/index', { products: products })
+                })
+            });
+        }
+    })
+
 })
 
 
