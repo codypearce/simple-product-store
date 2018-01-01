@@ -7,6 +7,10 @@
 .product-box img {
 	width: 100%;
 }
+.admin_productImg {
+	height: 100px;
+	width: auto;
+}
 .link {
 	color: #333;
 	text-decoration: none;

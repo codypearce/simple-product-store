@@ -44,10 +44,8 @@ router.post('/products', function (req, res) {
     let imgName;
     upload(req, res, (err) => {
         if(err) {
-            return console.log(err)
-
+            res.send(err)
         } else {
-
             imgName = req.file.filename;
             Product.create({
                 title: req.body.title,
@@ -66,7 +64,6 @@ router.post('/products', function (req, res) {
             });
         }
     })
-
 })
 
 router.get('/product/add', function(req, res) {
@@ -93,7 +90,7 @@ router.post('/product/edit/:productID', function(req, res) {
                 slug: req.body.slug,
                 price: req.body.price,
                 link: req.body.link,
-                imgLink: req.body.imgLink,
+                imgLink: imgName,
                 description: req.body.description
             }, function(err, product) {
 
@@ -105,7 +102,6 @@ router.post('/product/edit/:productID', function(req, res) {
             });
         }
     })
-
 })
 
 
