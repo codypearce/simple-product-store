@@ -28,6 +28,7 @@ block content
 			.col-6
 				if product.imgLink
 					img(src='/productImages/'+product.imgLink class="admin_productImg")
+					input(type="hidden" value=product.imgLink name="originalImgLink")
 				else
 					p No product image found
 		.form-group

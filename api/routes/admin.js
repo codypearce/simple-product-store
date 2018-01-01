@@ -84,7 +84,11 @@ router.post('/product/edit/:productID', function(req, res) {
         if(err) {
             res.send(err)
         } else {
-            imgName = req.file.filename;
+            if(req.file) {
+                imgName = req.file.filename;
+            } else {
+                imgName = req.body.originalImgLink;
+            }
             Product.update({_id: req.params.productID}, {
                 title: req.body.title,
                 slug: req.body.slug,
