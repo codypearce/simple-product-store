@@ -5,7 +5,7 @@ block links
 	
 block content
 	h3(class="mb-4") Add Product
-	form(action="/admin/products" method="post")
+	form(action="/admin/products" method="post" enctype="multipart/form-data")
 		.row
 			.col-6
 				.form-group
@@ -27,7 +27,7 @@ block content
 			.col-6
 				.form-group
 					label Image
-					input.form-control-file(type="file")
+					input.form-control-file(type="file" name="imageUpload")
 		.form-group
 			label Description
 			textarea(class="form-control" rows=5 name="description")

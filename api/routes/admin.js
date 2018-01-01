@@ -1,6 +1,18 @@
-var express = require('express')
-  , router = express.Router()
-  , Product = require('../models/product')
+var express = require('express'),
+    router = express.Router(),
+    Product = require('../models/product')
+
+var multer  = require('multer');
+var dest = 'client/productImages/';
+var storage = multer.diskStorage({
+    destination: function(req, file, cb) {
+        cb(null, dest);
+    },
+    filename: function (req, file, cb) {
+        cb(null, file.originalname);
+    }
+})
+var upload = multer({ storage: storage })
 
 router.get('/', function(req, res) {
   Product.find(function(err, products) {
@@ -12,7 +24,7 @@ router.get('/', function(req, res) {
 });
 
 
-router.post('/products', function(req, res) {
+router.post('/products', upload.single('imageUpload'), function (req, res) {
     Product.create({
         title: req.body.title,
         slug: req.body.slug,
@@ -42,7 +54,7 @@ router.get('/product/edit/:productID', (req,res) => {
   })
 });
 
-router.post('/product/edit/:productID', function(req, res) {
+router.post('/product/edit/:productID', upload.single('imageUpload'), function(req, res) {
     Product.update({_id: req.params.productID}, {
         title: req.body.title,
         slug: req.body.slug,
