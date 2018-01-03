@@ -33,8 +33,12 @@ function checkFileType(file, cb) {
 router.get('/', function(req, res) {
   Product.find(function(err, products) {
       limitText(products, 100)
+      
+      let sorted = products.sort(function(a,b) {
+          return new Date(b.createdAt) - new Date(a.createdAt);
+      })
       res.render('admin/index', {
-          products: products
+          products: sorted
       })
   })
 });
