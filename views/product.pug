@@ -11,7 +11,11 @@ block content
 		.container
 			.row
 				.col-6
-					.product-box
+					if product.imgLink
+						.product-box
+							img(src='/productImages/' + product.imgLink)
+					else
+						.product-box
 				.col-6
 					.row.d-flex.justify-content-between.align-items-center
 						h3 Price
