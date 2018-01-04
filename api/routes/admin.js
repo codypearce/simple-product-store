@@ -33,7 +33,7 @@ function checkFileType(file, cb) {
 router.get('/', function(req, res) {
   Product.find(function(err, products) {
       limitText(products, 100)
-      
+
       let sorted = products.sort(function(a,b) {
           return new Date(b.createdAt) - new Date(a.createdAt);
       })
@@ -55,7 +55,7 @@ router.post('/products', function (req, res) {
                 title: req.body.title,
                 slug: req.body.slug,
                 price: req.body.price,
-                link: req.body.link,
+                externalLink: req.body.externalLink,
                 imgLink: imgName,
                 description: req.body.description
             }, function(err, product) {
@@ -97,7 +97,7 @@ router.post('/product/edit/:productID', function(req, res) {
                 title: req.body.title,
                 slug: req.body.slug,
                 price: req.body.price,
-                link: req.body.link,
+                externalLink: req.body.externalLink,
                 imgLink: imgName,
                 description: req.body.description
             }, function(err, product) {
