@@ -39,3 +39,12 @@
 	text-decoration: none;
 	color: #333;
 }
+
+.btn-outline-edit {
+	border: 1px solid #2ecc71;
+	color: #2ecc71;
+}
+.btn-outline-edit:hover {
+	background: #2ecc71;
+	color: white;
+}

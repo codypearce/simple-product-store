@@ -8,7 +8,7 @@ block content
 		span.d-flex.flex-row.align-items-baseline
 			h3 List of Products
 			small.ml-3 #{products.length} Products
-		a(href="/admin/product/add" class="btn btn-primary") Add
+		a(href="/admin/product/add" class="btn btn-outline-primary") Add
 	hr.mb-5
 	if products.length > 0
 		each product in products
@@ -20,8 +20,8 @@ block content
 					div
 						p #{product.description}
 				div(class="")
-					a(href="/admin/product/edit/" + product._id class="btn btn-info") Edit
-					a(href="/admin/product/delete/" + product._id class="btn btn-danger") Delete
+					a(href="/admin/product/edit/" + product._id class="btn btn-outline-edit mr-2") Edit
+					a(href="/admin/product/delete/" + product._id class="btn btn-outline-danger") Delete
 	else
 		div(class="d-flex justify-content-center align-items-center")
 			p(class="text-muted") You don't have any products!
