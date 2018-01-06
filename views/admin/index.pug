@@ -21,7 +21,18 @@ block content
 						p #{product.description}
 				div(class="")
 					a(href="/admin/product/edit/" + product._id class="btn btn-outline-edit mr-2") Edit
-					a(href="/admin/product/delete/" + product._id class="btn btn-outline-danger") Delete
+					button(data-toggle="modal" data-target="#deleteModal" class="btn btn-outline-danger") Delete
+					#deleteModal.modal.fade(tabindex="-1" role="dialog" aria-labelledby="deleteModal" aria-hidden="true")
+						.modal-dialog(role="document")
+							.modal-content
+								.modal-body
+									| Are you sure you want to delete this product?
+								.modal-footer
+									button.btn.btn-secondary(type="button" data-dismiss="modal") Close
+									a.btn.btn-danger(href="/admin/product/delete/" + product._id) Delete Product
 	else
 		div(class="d-flex justify-content-center align-items-center")
 			p(class="text-muted") You don't have any products!
+			
+
+	
