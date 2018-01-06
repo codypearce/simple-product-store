@@ -64,9 +64,7 @@ router.post('/products', function (req, res) {
 
                 if (err) res.send(err);
 
-                Product.find(function(err, products) {
-                    res.render('admin/index', { products: products })
-                })
+                res.redirect('/admin');
             });
         }
     })
@@ -106,9 +104,7 @@ router.post('/product/edit/:productID', function(req, res) {
 
                 if (err) res.send(err);
 
-                Product.find(function(err, products) {
-                    res.render('admin/index', { products: products })
-                })
+                res.redirect('/admin');
             });
         }
     })
