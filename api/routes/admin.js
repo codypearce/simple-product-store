@@ -50,7 +50,9 @@ router.post('/products', function (req, res) {
         if(err) {
             res.send(err)
         } else {
-            imgName = req.file.filename;
+            if(req.file) {
+                imgName = req.file.filename;
+            }
             Product.create({
                 title: req.body.title,
                 slug: req.body.slug,
@@ -116,10 +118,8 @@ router.post('/product/edit/:productID', function(req, res) {
 router.get('/product/delete/:productID', function(req, res) {
     Product.remove({
         _id: req.params.productID
-    },function(err, products) {
-        res.render('admin/index', {
-            products: products
-        })
+    },function(err, product) {
+        res.redirect('/admin')
     })
 });
 
