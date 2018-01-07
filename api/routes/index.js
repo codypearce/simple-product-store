@@ -12,12 +12,12 @@ router.get('/', function(req, res) {
 
 
 router.get('/products/:slug', (req,res) => {
-    Product.find({
+    Product.findOne({
         slug: req.params.slug
     }, (err, product) => {
         if(err) res.send(err)
 
-        res.render('product', {product: product[0]})
+        res.render('product', {product: product})
     })
 });
 
