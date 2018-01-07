@@ -1,0 +1,9 @@
+.product-box {
+	height: 250px;
+	width: 100%;
+	background: #eee;
+	overflow: hidden;
+}
+.product-box img {
+	width: 100%;
+}

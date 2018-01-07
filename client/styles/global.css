@@ -1,16 +1,4 @@
-.product-box {
-	height: 250px;
-	width: 100%;
-	background: #eee;
-	overflow: hidden;
-}
-.product-box img {
-	width: 100%;
-}
-.admin_productImg {
-	height: 100px;
-	width: auto;
-}
+
 .link {
 	color: #333;
 	text-decoration: none;
@@ -27,10 +15,6 @@
 	color: #333;
 }
 
-.sub-text {
-	font-size: 12px;
-	color: #1f1f1f1;
-}
 .resetAnchor {
 	text-decoration: none;
 	color: #333;
@@ -40,11 +24,8 @@
 	color: #333;
 }
 
-.btn-outline-edit {
-	border: 1px solid #2ecc71;
-	color: #2ecc71;
-}
-.btn-outline-edit:hover {
-	background: #2ecc71;
-	color: white;
+
+.sub-text {
+	font-size: 12px;
+	color: #1f1f1f1;
 }
