@@ -9,17 +9,17 @@ block content
 		.row
 			.col-6
 				.form-group
-					input.form-control(type="text", aria-describedby="Title", placeholder="Title" name="title" value=product.title)
+					input.form-control(type="text", aria-describedby="Title", placeholder="Title" name="title" required value=product.title)
 			.col-6
 				.form-group
-					input.form-control(type="text", aria-describedby="slug", placeholder="Slug" name="slug" value=product.slug)
+					input.form-control(type="text", aria-describedby="slug", placeholder="Slug" name="slug" required alue=product.slug)
 		.row
 			.col-6
 				.form-group
-					input.form-control(type="number", aria-describedby="price", placeholder="Price" name="price" value=product.price)
+					input.form-control(type="number", aria-describedby="price", placeholder="Price" name="price" required value=product.price)
 			.col-6
 				.form-group
-					input.form-control(type="text", aria-describedby="externalLink", placeholder="External Link" name="externalLink" value=product.externalLink)
+					input.form-control(type="url", aria-describedby="externalLink", placeholder="External Link" required name="externalLink" value=product.externalLink)
 		.row
 			.col-6
 				.form-group

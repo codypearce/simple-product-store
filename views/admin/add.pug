@@ -10,17 +10,17 @@ block content
 		.row
 			.col-6
 				.form-group
-					input.form-control(type="text", aria-describedby="Title", placeholder="Title" name="title")
+					input.form-control(type="text", aria-describedby="Title", placeholder="Title" name="title" required)
 			.col-6
 				.form-group
-					input.form-control(type="text", aria-describedby="slug", placeholder="Slug" name="slug")
+					input.form-control(type="text", aria-describedby="slug", placeholder="Slug" name="slug" required)
 		.row
 			.col-6
 				.form-group
-					input.form-control(type="number", aria-describedby="price", placeholder="Price" name="price")
+					input.form-control(type="number", aria-describedby="price", placeholder="Price" name="price" required)
 			.col-6
 				.form-group
-					input.form-control(type="text", aria-describedby="externalLink", placeholder="External Link" name="externalLink" id="externalLinkInput")
+					input.form-control(type="url", aria-describedby="externalLink", placeholder="External Link" name="externalLink" required id="externalLinkInput")
 		.row
 			.col-6
 				.form-group
@@ -28,5 +28,5 @@ block content
 					input.form-control-file(type="file" name="imageUpload")
 		.form-group
 			label Description
-			textarea(class="form-control" rows=5 name="description")
+			textarea(class="form-control" rows=5 name="description" required)
 		button(class="btn btn-outline-success" type=submit) Add Product
