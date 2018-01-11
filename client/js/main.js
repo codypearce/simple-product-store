@@ -1,3 +1,12 @@
+
+if(document.getElementById('submitBtn')) {
+    var submitBtn = document.getElementById('submitBtn');
+    submitBtn.addEventListener('click', function() {
+        submitForm();
+    })
+
+}
+action="/admin/products" method="post" enctype="multipart/form-data"
 var elInput = document.getElementById('externalLinkInput');
 elInput.addEventListener('blur', function(e) {
     var val = e.target.value;

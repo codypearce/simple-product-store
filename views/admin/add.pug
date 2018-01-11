@@ -6,7 +6,7 @@ block links
 block content
 	h3(class="mb-4") Add Product
 	h3 #{msg}
-	form(action="/admin/products" method="post" enctype="multipart/form-data")
+	form()
 		.row
 			.col-6
 				.form-group
@@ -29,4 +29,4 @@ block content
 		.form-group
 			label Description
 			textarea(class="form-control" rows=5 name="description" required)
-		button(class="btn btn-outline-success" type=submit) Add Product
+		button(class="btn btn-outline-success" id="submitForm" type=submit) Add Product
