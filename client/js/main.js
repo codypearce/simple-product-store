@@ -1,12 +1,32 @@
 
 if(document.getElementById('submitBtn')) {
     var submitBtn = document.getElementById('submitBtn');
-    submitBtn.addEventListener('click', function() {
+    submitBtn.addEventListener('click', function(e) {
+        e.preventDefault();
         submitForm();
     })
-
 }
-action="/admin/products" method="post" enctype="multipart/form-data"
+function submitForm() {
+    var formData = getFormData();
+    console.log(formData)
+}
+
+function getFormData() {
+    var obj = {
+        title: getVal('title'),
+        slug: getVal('slug'),
+        price: getVal('price'),
+        externalLink: getVal('externalLink'),
+        description: getVal('description'),
+    }
+    return obj;
+}
+function getVal(name) {
+    return document.getElementsByName(name).value;
+}
+
+
+
 var elInput = document.getElementById('externalLinkInput');
 elInput.addEventListener('blur', function(e) {
     var val = e.target.value;
