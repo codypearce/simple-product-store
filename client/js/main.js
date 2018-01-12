@@ -22,7 +22,7 @@ function getFormData() {
     return obj;
 }
 function getVal(name) {
-    return document.getElementsByName(name).value;
+    return document.getElementsByName(name)[0].value;
 }
 
 
