@@ -9,6 +9,16 @@ if(document.getElementById('submitBtn')) {
 function submitForm() {
     var formData = getFormData();
     console.log(formData)
+    fetch('/admin/products', {
+        method: 'POST',
+        body: JSON.stringify(formData),
+        headers: new Headers({
+            'Content-Type': 'application/json'
+        })
+    })
+    .then(res => console.log(res))
+    .catch(error => console.error('Error', error))
+
 }
 
 function getFormData() {
