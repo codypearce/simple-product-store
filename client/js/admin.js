@@ -6,12 +6,7 @@ window.onload = function() {
             submitForm();
         })
     }
-    var elInput = document.getElementById('externalLinkInput');
-    if(elInput) {
-        elInput.addEventListener('blur', function(e) {
-
-        })
-    }
+    setUpValidation();
 }
 
 // Submitting the Form
@@ -48,6 +43,9 @@ function getVal(name) {
 function getInput(name) {
     return document.getElementsByName(name)[0];
 }
+
+
+
 // Validating the form
 function setUpValidation() {
     addBlur(getInput('title'), titleValidation);
@@ -60,24 +58,46 @@ function setUpValidation() {
 function addBlur(el, validateFunction) {
     return el.addEventListener('blur', (e) => validateFunction(e))
 }
-setUpValidation();
+
 function titleValidation(e) {
-    console.log('titleValidation!')
+    var val = e.target.value;
+    if(!val) {
+        console.log('Please add a title!')
+    }
 }
 function slugValidation(e) {
-    console.log('slugValidation!')
+    var val = e.target.value;
+    if(!val) {
+        console.log('Please add slug!')
+    }
+    // Check if Unqiue
+
 }
 function priceValidation(e) {
-    console.log('priceValidation!')
+    var val = e.target.value;
+    if(!val) {
+        console.log('Please add a price!')
+    }
+    if(isNaN(val)) {
+        val = '',
+        console.log('Only Numbers!')
+    }
+
 }
 function externalLinkValidation(e) {
     var val = e.target.value;
+    if(!val) {
+        console.log('Please add a url!')
+    }
     if(!validateUrl(val)) {
         console.log('Please Input a valid url')
     }
 }
 function descriptionValidation(e) {
-    console.log('descriptionValidation!')
+    var val = e.target.value;
+    if(!val) {
+        console.log('Please add a descriptionValidation!')
+    }
 }
 function validateUrl(url) {
     var testUrl = url.match(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g);
