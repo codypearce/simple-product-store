@@ -1,11 +1,22 @@
-
-if(document.getElementById('submitBtn')) {
+window.onload = function() {
     var submitBtn = document.getElementById('submitBtn');
-    submitBtn.addEventListener('click', function(e) {
-        e.preventDefault();
-        submitForm();
-    })
+    if(submitBtn) {
+        submitBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            submitForm();
+        })
+    }
+    var elInput = document.getElementById('externalLinkInput');
+    if(elInput) {
+        elInput.addEventListener('blur', function(e) {
+            var val = e.target.value;
+            if(!validateUrl(val)) {
+                alert('Please Input a valid url')
+            }
+        })
+    }
 }
+
 function submitForm() {
     var formData = getFormData();
     console.log(formData)
@@ -37,13 +48,6 @@ function getVal(name) {
 
 
 
-var elInput = document.getElementById('externalLinkInput');
-elInput.addEventListener('blur', function(e) {
-    var val = e.target.value;
-    if(!validateUrl(val)) {
-        alert('Please Input a valid url')
-    }
-})
 
 
 function validateUrl(url) {
