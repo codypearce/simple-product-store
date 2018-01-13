@@ -17,6 +17,7 @@ window.onload = function() {
     }
 }
 
+// Submitting the Form
 function submitForm() {
     var formData = getFormData();
     console.log(formData)
@@ -47,9 +48,37 @@ function getVal(name) {
 }
 
 
+function getInput(name) {
+    return document.getElementsByName(name)[0];
+}
+// Validating the form
+function setUpValidation() {
+    addBlur(getInput('title'), titleValidation);
+    addBlur(getInput('slug'), slugValidation);
+    addBlur(getInput('price'), priceValidation);
+    addBlur(getInput('externalLink'), externalLinkValidation);
+    addBlur(getInput('description'), descriptionValidation);
 
-
-
+}
+function addBlur(el, validateFunction) {
+    return el.addEventListener('blur', (e) => validateFunction())
+}
+setUpValidation();
+function titleValidation() {
+    console.log('titleValidation!')
+}
+function slugValidation() {
+    console.log('slugValidation!')
+}
+function priceValidation() {
+    console.log('priceValidation!')
+}
+function externalLinkValidation() {
+    console.log('externalLinkValidation!')
+}
+function descriptionValidation() {
+    console.log('descriptionValidation!')
+}
 function validateUrl(url) {
     var testUrl = url.match(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g);
     return testUrl == null ? false : true;
