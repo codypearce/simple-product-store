@@ -9,10 +9,7 @@ window.onload = function() {
     var elInput = document.getElementById('externalLinkInput');
     if(elInput) {
         elInput.addEventListener('blur', function(e) {
-            var val = e.target.value;
-            if(!validateUrl(val)) {
-                alert('Please Input a valid url')
-            }
+
         })
     }
 }
@@ -61,22 +58,25 @@ function setUpValidation() {
 
 }
 function addBlur(el, validateFunction) {
-    return el.addEventListener('blur', (e) => validateFunction())
+    return el.addEventListener('blur', (e) => validateFunction(e))
 }
 setUpValidation();
-function titleValidation() {
+function titleValidation(e) {
     console.log('titleValidation!')
 }
-function slugValidation() {
+function slugValidation(e) {
     console.log('slugValidation!')
 }
-function priceValidation() {
+function priceValidation(e) {
     console.log('priceValidation!')
 }
-function externalLinkValidation() {
-    console.log('externalLinkValidation!')
+function externalLinkValidation(e) {
+    var val = e.target.value;
+    if(!validateUrl(val)) {
+        console.log('Please Input a valid url')
+    }
 }
-function descriptionValidation() {
+function descriptionValidation(e) {
     console.log('descriptionValidation!')
 }
 function validateUrl(url) {
