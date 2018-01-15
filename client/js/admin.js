@@ -62,6 +62,8 @@ function addBlur(el, validateFunction) {
 function titleValidation(e) {
     var val = e.target.value;
     if(!val) {
+        console.log(e.target)
+        createError(e.target, 'Please add a title!')
         console.log('Please add a title!')
     }
 }
@@ -102,4 +104,13 @@ function descriptionValidation(e) {
 function validateUrl(url) {
     var testUrl = url.match(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g);
     return testUrl == null ? false : true;
+}
+
+// Create and display Form Errors
+
+function createError(inputDiv, errorMsg) {
+    var errorSpan = document.createElement('span');
+    errorSpan.classList.add('error');
+    errorSpan.textContent = errorMsg;
+    inputDiv.parentElement.appendChild(errorSpan)
 }
