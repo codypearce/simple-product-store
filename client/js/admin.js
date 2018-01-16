@@ -61,10 +61,11 @@ function addBlur(el, validateFunction) {
 
 function titleValidation(e) {
     var val = e.target.value;
+    if(e.target.parentElement.querySelector('.error')) {
+        e.target.parentElement.removeChild(e.target.parentElement.querySelector('.error'));
+    }
     if(!val) {
-        console.log(e.target)
         createError(e.target, 'Please add a title!')
-        console.log('Please add a title!')
     }
 }
 function slugValidation(e) {
