@@ -61,9 +61,7 @@ function addBlur(el, validateFunction) {
 
 function titleValidation(e) {
     var val = e.target.value;
-    if(e.target.parentElement.querySelector('.error')) {
-        e.target.parentElement.removeChild(e.target.parentElement.querySelector('.error'));
-    }
+    deleteErrorIfExists(e.target.parentElement);
     if(!val) {
         createError(e.target, 'Please add a title!')
     }
@@ -114,4 +112,10 @@ function createError(inputDiv, errorMsg) {
     errorSpan.classList.add('error');
     errorSpan.textContent = errorMsg;
     inputDiv.parentElement.appendChild(errorSpan)
+}
+function deleteErrorIfExists(parent) {
+    var error = parent.querySelector('.error') || null;
+    if(error) {
+        parent.removeChild(error);
+    }
 }
