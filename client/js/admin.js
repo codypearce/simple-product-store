@@ -68,16 +68,18 @@ function titleValidation(e) {
 }
 function slugValidation(e) {
     var val = e.target.value;
+    deleteErrorIfExists(e.target.parentElement);
     if(!val) {
-        console.log('Please add slug!')
+        createError(e.target, 'Please add a slug!')
     }
     // Check if Unqiue
 
 }
 function priceValidation(e) {
     var val = e.target.value;
+    deleteErrorIfExists(e.target.parentElement);
     if(!val) {
-        console.log('Please add a price!')
+        createError(e.target, 'Please add a price!')
     }
     if(isNaN(val)) {
         val = '',
@@ -87,8 +89,9 @@ function priceValidation(e) {
 }
 function externalLinkValidation(e) {
     var val = e.target.value;
+    deleteErrorIfExists(e.target.parentElement);
     if(!val) {
-        console.log('Please add a url!')
+        createError(e.target, 'Please add a url!')
     }
     if(!validateUrl(val)) {
         console.log('Please Input a valid url')
@@ -96,8 +99,9 @@ function externalLinkValidation(e) {
 }
 function descriptionValidation(e) {
     var val = e.target.value;
+    deleteErrorIfExists(e.target.parentElement);
     if(!val) {
-        console.log('Please add a descriptionValidation!')
+        createError(e.target, 'Please add a Description')
     }
 }
 function validateUrl(url) {
