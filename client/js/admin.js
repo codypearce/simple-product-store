@@ -83,7 +83,7 @@ function priceValidation(e) {
     }
     if(isNaN(val)) {
         val = '',
-        console.log('Only Numbers!')
+        createError(e.target, 'Only numbers!')
     }
 
 }
@@ -94,7 +94,7 @@ function externalLinkValidation(e) {
         createError(e.target, 'Please add a url!')
     }
     if(!validateUrl(val)) {
-        console.log('Please Input a valid url')
+        createError(e.target, 'Please input a valid url!')
     }
 }
 function descriptionValidation(e) {
@@ -102,6 +102,9 @@ function descriptionValidation(e) {
     deleteErrorIfExists(e.target.parentElement);
     if(!val) {
         createError(e.target, 'Please add a Description')
+    }
+    if(val.length < 100) {
+        createError(e.target, 'Please add a longer description')
     }
 }
 function validateUrl(url) {
