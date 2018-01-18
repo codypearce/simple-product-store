@@ -116,7 +116,8 @@ function createError(inputDiv, errorMsg) {
     var errorSpan = document.createElement('span');
     errorSpan.classList.add('error');
     errorSpan.textContent = errorMsg;
-    inputDiv.parentElement.appendChild(errorSpan)
+    inputDiv.parentElement.appendChild(errorSpan);
+    return;
 }
 function deleteErrorIfExists(parent) {
     var error = parent.querySelector('.error') || null;
