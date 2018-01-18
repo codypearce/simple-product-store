@@ -80,8 +80,7 @@ function priceValidation(e) {
     deleteErrorIfExists(e.target.parentElement);
     if(!val) {
         createError(e.target, 'Please add a price!')
-    }
-    if(isNaN(val)) {
+    } else if(isNaN(val)) {
         val = '',
         createError(e.target, 'Only numbers!')
     }
@@ -91,9 +90,8 @@ function externalLinkValidation(e) {
     var val = e.target.value;
     deleteErrorIfExists(e.target.parentElement);
     if(!val) {
-        createError(e.target, 'Please add a url!')
-    }
-    if(!validateUrl(val)) {
+        return createError(e.target, 'Please add a url!')
+    } else if (!validateUrl(val)) {
         createError(e.target, 'Please input a valid url!')
     }
 }
@@ -101,9 +99,9 @@ function descriptionValidation(e) {
     var val = e.target.value;
     deleteErrorIfExists(e.target.parentElement);
     if(!val) {
-        createError(e.target, 'Please add a Description')
-    }
-    if(val.length < 100) {
+        return createError(e.target, 'Please add a Description')
+
+    } else if(val.length < 100) {
         createError(e.target, 'Please add a longer description')
     }
 }
