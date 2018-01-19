@@ -65,7 +65,7 @@ function titleValidation(e) {
     var val = input.value;
     deleteErrorIfExists(parent, input);
     if(!val) {
-        createError(e.target, 'Please add a title!')
+        createError(input, 'Please add a title!')
     }
 }
 function slugValidation(e) {
@@ -74,7 +74,7 @@ function slugValidation(e) {
     var val = input.value;
     deleteErrorIfExists(parent, input);
     if(!val) {
-        createError(e.target, 'Please add a slug!')
+        createError(input, 'Please add a slug!')
     }
     // Check if Unqiue
 
@@ -85,10 +85,10 @@ function priceValidation(e) {
     var val = input.value;
     deleteErrorIfExists(parent, input);
     if(!val) {
-        createError(e.target, 'Please add a price!')
+        createError(input, 'Please add a price!')
     } else if(isNaN(val)) {
         val = '',
-        createError(e.target, 'Only numbers!')
+        createError(input, 'Only numbers!')
     }
 
 }
@@ -98,9 +98,9 @@ function externalLinkValidation(e) {
     var val = input.value;
     deleteErrorIfExists(parent, input);
     if(!val) {
-        return createError(e.target, 'Please add a url!')
+        return createError(input, 'Please add a url!')
     } else if (!validateUrl(val)) {
-        createError(e.target, 'Please input a valid url!')
+        createError(input, 'Please input a valid url!')
     }
 }
 function descriptionValidation(e) {
@@ -109,10 +109,10 @@ function descriptionValidation(e) {
     var val = input.value;
     deleteErrorIfExists(parent, input);
     if(!val) {
-        return createError(e.target, 'Please add a Description')
+        return createError(input, 'Please add a Description')
 
     } else if(val.length < 100) {
-        createError(e.target, 'Please add a longer description')
+        createError(input, 'Please add a longer description')
     }
 }
 function validateUrl(url) {
