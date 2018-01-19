@@ -30,6 +30,9 @@
 	color: #1f1f1f1;
 }
 
+.error-input {
+	border: 1px solid red;
+}
 .error {
 	color: red;
 	font-size: 12px;

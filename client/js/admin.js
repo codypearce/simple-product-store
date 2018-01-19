@@ -60,15 +60,19 @@ function addBlur(el, validateFunction) {
 }
 
 function titleValidation(e) {
-    var val = e.target.value;
-    deleteErrorIfExists(e.target.parentElement);
+    var input = e.target;
+    var parent = input.parentElement;
+    var val = input.value;
+    deleteErrorIfExists(parent, input);
     if(!val) {
         createError(e.target, 'Please add a title!')
     }
 }
 function slugValidation(e) {
-    var val = e.target.value;
-    deleteErrorIfExists(e.target.parentElement);
+    var input = e.target;
+    var parent = input.parentElement;
+    var val = input.value;
+    deleteErrorIfExists(parent, input);
     if(!val) {
         createError(e.target, 'Please add a slug!')
     }
@@ -76,8 +80,10 @@ function slugValidation(e) {
 
 }
 function priceValidation(e) {
-    var val = e.target.value;
-    deleteErrorIfExists(e.target.parentElement);
+    var input = e.target;
+    var parent = input.parentElement;
+    var val = input.value;
+    deleteErrorIfExists(parent, input);
     if(!val) {
         createError(e.target, 'Please add a price!')
     } else if(isNaN(val)) {
@@ -87,8 +93,10 @@ function priceValidation(e) {
 
 }
 function externalLinkValidation(e) {
-    var val = e.target.value;
-    deleteErrorIfExists(e.target.parentElement);
+    var input = e.target;
+    var parent = input.parentElement;
+    var val = input.value;
+    deleteErrorIfExists(parent, input);
     if(!val) {
         return createError(e.target, 'Please add a url!')
     } else if (!validateUrl(val)) {
@@ -96,8 +104,10 @@ function externalLinkValidation(e) {
     }
 }
 function descriptionValidation(e) {
-    var val = e.target.value;
-    deleteErrorIfExists(e.target.parentElement);
+    var input = e.target;
+    var parent = input.parentElement;
+    var val = input.value;
+    deleteErrorIfExists(parent, input);
     if(!val) {
         return createError(e.target, 'Please add a Description')
 
@@ -117,11 +127,13 @@ function createError(inputDiv, errorMsg) {
     errorSpan.classList.add('error');
     errorSpan.textContent = errorMsg;
     inputDiv.parentElement.appendChild(errorSpan);
+    inputDiv.classList.add('error-input');
     return;
 }
-function deleteErrorIfExists(parent) {
+function deleteErrorIfExists(parent, inputDiv) {
     var error = parent.querySelector('.error') || null;
     if(error) {
         parent.removeChild(error);
+        inputDiv.classList.remove('error-input');
     }
 }
