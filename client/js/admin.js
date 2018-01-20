@@ -3,8 +3,9 @@ window.onload = function() {
     if(submitBtn) {
         submitBtn.addEventListener('click', function(e) {
             e.preventDefault();
+            deleteError(e.target);
             if(errorsExist()) {
-                console.log('Errors on page')
+                createError(e.target, 'Please fix the errors above before submitting');
                 return;
             } else {
                 checkForm();
@@ -92,7 +93,7 @@ function titleValidation(e, input) {
     }
 
     if(!val) {
-        createError(input, 'Please add a title!')
+        createInputError(input, 'Please add a title!')
     } else {
         showSuccess(input);
     }
@@ -109,7 +110,7 @@ function slugValidation(e, input) {
     }
 
     if(!val) {
-        createError(input, 'Please add a slug!')
+        createInputError(input, 'Please add a slug!')
     } else {
         showSuccess(input);
     }
@@ -128,10 +129,10 @@ function priceValidation(e, input) {
     }
 
     if(!val) {
-        createError(input, 'Please add a price!')
+        createInputError(input, 'Please add a price!')
     } else if(isNaN(val)) {
         val = '',
-        createError(input, 'Only numbers!')
+        createInputError(input, 'Only numbers!')
     } else {
         showSuccess(input);
     }
@@ -149,9 +150,9 @@ function externalLinkValidation(e, input) {
     }
 
     if(!val) {
-        createError(input, 'Please add a url!')
+        createInputError(input, 'Please add a url!')
     } else if (!validateUrl(val)) {
-        createError(input, 'Please input a valid url!')
+        createInputError(input, 'Please input a valid url!')
     } else {
         showSuccess(input);
     }
@@ -168,10 +169,9 @@ function descriptionValidation(e, input) {
     }
 
     if(!val) {
-        createError(input, 'Please add a Description')
-
+        createInputError(input, 'Please add a Description')
     } else if(val.length < 100) {
-        createError(input, 'Please add a longer description')
+        createInputError(input, 'Please add a longer description')
     } else {
         showSuccess(input);
     }
@@ -183,13 +183,20 @@ function validateUrl(url) {
 
 // Create and display Form Errors
 
-function createError(inputDiv, errorMsg) {
+function createInputError(inputDiv, errorMsg) {
     var errorSpan = document.createElement('span');
     errorSpan.classList.add('error');
     errorSpan.textContent = errorMsg;
     inputDiv.parentElement.appendChild(errorSpan);
     inputDiv.classList.add('input--error');
     inputDiv.classList.remove('input--success');
+    return;
+}
+function createError(el, errorMsg) {
+    var errorSpan = document.createElement('span');
+    errorSpan.classList.add('error');
+    errorSpan.textContent = errorMsg;
+    el.parentElement.appendChild(errorSpan);
     return;
 }
 function deleteErrorIfExists(parent, inputDiv) {
@@ -199,7 +206,12 @@ function deleteErrorIfExists(parent, inputDiv) {
         inputDiv.classList.remove('error-input');
     }
 }
-
+function deleteError(el) {
+    var error = el.parentElement.querySelector('.error') || null;
+    if(error) {
+        el.parentElement.removeChild(error);
+    }
+}
 function showSuccess(inputDiv) {
     inputDiv.classList.add('input--success');
 }
