@@ -3,12 +3,23 @@ window.onload = function() {
     if(submitBtn) {
         submitBtn.addEventListener('click', function(e) {
             e.preventDefault();
+            if(errorsExist()) {
+                console.log('Errors on page')
+                return;
+            }
             submitForm();
         })
     }
     setUpValidation();
 }
-
+function errorsExist() {
+    var errors = document.querySelectorAll('.error');
+    if(errors.length > 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
 // Submitting the Form
 function submitForm() {
     var formData = getFormData();
