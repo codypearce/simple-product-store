@@ -66,6 +66,8 @@ function titleValidation(e) {
     deleteErrorIfExists(parent, input);
     if(!val) {
         createError(input, 'Please add a title!')
+    } else {
+        showSuccess(input);
     }
 }
 function slugValidation(e) {
@@ -75,6 +77,8 @@ function slugValidation(e) {
     deleteErrorIfExists(parent, input);
     if(!val) {
         createError(input, 'Please add a slug!')
+    } else {
+        showSuccess(input);
     }
     // Check if Unqiue
 
@@ -89,6 +93,8 @@ function priceValidation(e) {
     } else if(isNaN(val)) {
         val = '',
         createError(input, 'Only numbers!')
+    } else {
+        showSuccess(input);
     }
 
 }
@@ -98,9 +104,11 @@ function externalLinkValidation(e) {
     var val = input.value;
     deleteErrorIfExists(parent, input);
     if(!val) {
-        return createError(input, 'Please add a url!')
+        createError(input, 'Please add a url!')
     } else if (!validateUrl(val)) {
         createError(input, 'Please input a valid url!')
+    } else {
+        showSuccess(input);
     }
 }
 function descriptionValidation(e) {
@@ -109,10 +117,12 @@ function descriptionValidation(e) {
     var val = input.value;
     deleteErrorIfExists(parent, input);
     if(!val) {
-        return createError(input, 'Please add a Description')
+        createError(input, 'Please add a Description')
 
     } else if(val.length < 100) {
         createError(input, 'Please add a longer description')
+    } else {
+        showSuccess(input);
     }
 }
 function validateUrl(url) {
@@ -127,7 +137,8 @@ function createError(inputDiv, errorMsg) {
     errorSpan.classList.add('error');
     errorSpan.textContent = errorMsg;
     inputDiv.parentElement.appendChild(errorSpan);
-    inputDiv.classList.add('error-input');
+    inputDiv.classList.add('input--error');
+    inputDiv.classList.remove('input--success');
     return;
 }
 function deleteErrorIfExists(parent, inputDiv) {
@@ -136,4 +147,8 @@ function deleteErrorIfExists(parent, inputDiv) {
         parent.removeChild(error);
         inputDiv.classList.remove('error-input');
     }
+}
+
+function showSuccess(inputDiv) {
+    inputDiv.classList.add('input--success');
 }
