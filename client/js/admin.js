@@ -6,6 +6,9 @@ window.onload = function() {
             if(errorsExist()) {
                 console.log('Errors on page')
                 return;
+            } else {
+                checkForm();
+                return
             }
             submitForm();
         })
@@ -64,28 +67,47 @@ function setUpValidation() {
     addBlur(getInput('price'), priceValidation);
     addBlur(getInput('externalLink'), externalLinkValidation);
     addBlur(getInput('description'), descriptionValidation);
-
 }
 function addBlur(el, validateFunction) {
     return el.addEventListener('blur', (e) => validateFunction(e))
 }
 
-function titleValidation(e) {
-    var input = e.target;
-    var parent = input.parentElement;
-    var val = input.value;
-    deleteErrorIfExists(parent, input);
+function checkForm() {
+    titleValidation(null, getInput('title'));
+    slugValidation(null, getInput('slug'));
+    priceValidation(null, getInput('price'));
+    externalLinkValidation(null, getInput('externalLink'));
+    descriptionValidation(null, getInput('description'));
+}
+
+function titleValidation(e, input) {
+    var val;
+    if(e) {
+        var input = e.target;
+        var parent = input.parentElement;
+        val = input.value;
+        deleteErrorIfExists(parent, input);
+    } else {
+        val = input.value;
+    }
+
     if(!val) {
         createError(input, 'Please add a title!')
     } else {
         showSuccess(input);
     }
 }
-function slugValidation(e) {
-    var input = e.target;
-    var parent = input.parentElement;
-    var val = input.value;
-    deleteErrorIfExists(parent, input);
+function slugValidation(e, input) {
+    var val;
+    if(e) {
+        var input = e.target;
+        var parent = input.parentElement;
+        val = input.value;
+        deleteErrorIfExists(parent, input);
+    } else {
+        val = input.value;
+    }
+
     if(!val) {
         createError(input, 'Please add a slug!')
     } else {
@@ -94,11 +116,17 @@ function slugValidation(e) {
     // Check if Unqiue
 
 }
-function priceValidation(e) {
-    var input = e.target;
-    var parent = input.parentElement;
-    var val = input.value;
-    deleteErrorIfExists(parent, input);
+function priceValidation(e, input) {
+    var val;
+    if(e) {
+        var input = e.target;
+        var parent = input.parentElement;
+        val = input.value;
+        deleteErrorIfExists(parent, input);
+    } else {
+        val = input.value;
+    }
+
     if(!val) {
         createError(input, 'Please add a price!')
     } else if(isNaN(val)) {
@@ -109,11 +137,17 @@ function priceValidation(e) {
     }
 
 }
-function externalLinkValidation(e) {
-    var input = e.target;
-    var parent = input.parentElement;
-    var val = input.value;
-    deleteErrorIfExists(parent, input);
+function externalLinkValidation(e, input) {
+    var val;
+    if(e) {
+        var input = e.target;
+        var parent = input.parentElement;
+        val = input.value;
+        deleteErrorIfExists(parent, input);
+    } else {
+        val = input.value;
+    }
+
     if(!val) {
         createError(input, 'Please add a url!')
     } else if (!validateUrl(val)) {
@@ -122,11 +156,17 @@ function externalLinkValidation(e) {
         showSuccess(input);
     }
 }
-function descriptionValidation(e) {
-    var input = e.target;
-    var parent = input.parentElement;
-    var val = input.value;
-    deleteErrorIfExists(parent, input);
+function descriptionValidation(e, input) {
+    var val;
+    if(e) {
+        var input = e.target;
+        var parent = input.parentElement;
+        val = input.value;
+        deleteErrorIfExists(parent, input);
+    } else {
+        val = input.value;
+    }
+
     if(!val) {
         createError(input, 'Please add a Description')
 
