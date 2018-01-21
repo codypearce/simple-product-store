@@ -4,14 +4,14 @@ window.onload = function() {
         submitBtn.addEventListener('click', function(e) {
             e.preventDefault();
             deleteError(e.target);
+            checkForm();
             if(errorsExist()) {
                 createError(e.target, 'Please fix the errors above before submitting');
                 return;
             } else {
-                checkForm();
-                return
+                submitForm();
             }
-            submitForm();
+
         })
     }
     setUpValidation();
@@ -149,9 +149,7 @@ function externalLinkValidation(e, input) {
         val = input.value;
     }
 
-    if(!val) {
-        createInputError(input, 'Please add a url!')
-    } else if (!validateUrl(val)) {
+    if (!validateUrl(val)) {
         createInputError(input, 'Please input a valid url!')
     } else {
         showSuccess(input);
@@ -170,7 +168,7 @@ function descriptionValidation(e, input) {
 
     if(!val) {
         createInputError(input, 'Please add a Description')
-    } else if(val.length < 100) {
+    } else if(val.length < 50) {
         createInputError(input, 'Please add a longer description')
     } else {
         showSuccess(input);
