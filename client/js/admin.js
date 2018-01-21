@@ -85,13 +85,14 @@ function titleValidation(e, input) {
     var val;
     if(e) {
         var input = e.target;
-        var parent = input.parentElement;
+
         val = input.value;
-        deleteErrorIfExists(parent, input);
+
     } else {
         val = input.value;
     }
-
+    var parent = input.parentElement;
+    deleteErrorIfExists(parent, input);
     if(!val) {
         createInputError(input, 'Please add a title!')
     } else {
@@ -102,13 +103,14 @@ function slugValidation(e, input) {
     var val;
     if(e) {
         var input = e.target;
-        var parent = input.parentElement;
+
         val = input.value;
-        deleteErrorIfExists(parent, input);
+
     } else {
         val = input.value;
     }
-
+    var parent = input.parentElement;
+    deleteErrorIfExists(parent, input);
     if(!val) {
         createInputError(input, 'Please add a slug!')
     } else {
@@ -121,13 +123,12 @@ function priceValidation(e, input) {
     var val;
     if(e) {
         var input = e.target;
-        var parent = input.parentElement;
         val = input.value;
-        deleteErrorIfExists(parent, input);
     } else {
         val = input.value;
     }
-
+    var parent = input.parentElement;
+    deleteErrorIfExists(parent, input);
     if(!val) {
         createInputError(input, 'Please add a price!')
     } else if(isNaN(val)) {
@@ -142,14 +143,15 @@ function externalLinkValidation(e, input) {
     var val;
     if(e) {
         var input = e.target;
-        var parent = input.parentElement;
         val = input.value;
-        deleteErrorIfExists(parent, input);
     } else {
         val = input.value;
     }
-
-    if (!validateUrl(val)) {
+    var parent = input.parentElement;
+    deleteErrorIfExists(parent, input);
+    if(!val) {
+        return;
+    } else if (!validateUrl(val)) {
         createInputError(input, 'Please input a valid url!')
     } else {
         showSuccess(input);
@@ -159,13 +161,12 @@ function descriptionValidation(e, input) {
     var val;
     if(e) {
         var input = e.target;
-        var parent = input.parentElement;
         val = input.value;
-        deleteErrorIfExists(parent, input);
     } else {
         val = input.value;
     }
-
+    var parent = input.parentElement;
+    deleteErrorIfExists(parent, input);
     if(!val) {
         createInputError(input, 'Please add a Description')
     } else if(val.length < 50) {
