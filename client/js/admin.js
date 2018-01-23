@@ -192,7 +192,7 @@ function createInputError(inputDiv, errorMsg) {
     return;
 }
 function createError(el, errorMsg) {
-    var errorSpan = document.createElement('span');
+    var errorSpan = document.createElement('div');
     errorSpan.classList.add('error');
     errorSpan.textContent = errorMsg;
     el.parentElement.appendChild(errorSpan);
