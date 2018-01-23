@@ -35,7 +35,7 @@ function submitForm() {
             'Content-Type': 'application/json'
         })
     })
-    .then(res => console.log(res))
+    .then(res => window.location.href = '/admin')
     .catch(error => console.error('Error', error))
 
 }
