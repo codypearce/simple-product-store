@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "nodemon app.js",
     "start": "node app.js",
+    "lint": "./node_modules/.bin/eslint \"./{,!(node_modules)/**/}*.js\"",
     "test": "mocha \"./{,!(node_modules)/**/}*.test.js\" --reporter spec",
     "testWatch": "mocha -w \"./{,!(node_modules)/**/}*.test.js\" --reporter spec"
   },
