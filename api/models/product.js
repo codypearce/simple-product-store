@@ -10,6 +10,6 @@ var productSchema = new Schema ({
     link: String,
 },{
   timestamps: true
-});
+})
 
 module.exports = mongoose.model('Product', productSchema);
