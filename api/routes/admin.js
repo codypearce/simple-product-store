@@ -1,6 +1,6 @@
-var express = require('express'),
-    router = express.Router(),
-    Product = require('../models/product')
+var express = require('express')
+var router = express.Router()
+var Product = require('../models/product')
 var path = require('path')
 var multer = require('multer')
 var dest = 'client/productImages/'
@@ -32,6 +32,8 @@ function checkFileType (file, cb) {
 }
 router.get('/', function (req, res) {
     Product.find(function (err, products) {
+        if (err) res.send(err)
+
         limitText(products, 100)
 
         let sorted = products.sort(function (a, b) {
@@ -109,6 +111,8 @@ router.get('/product/delete/:productID', function (req, res) {
     Product.remove({
         _id: req.params.productID
     }, function (err, product) {
+        if (err) res.send(err)
+
         res.redirect('/admin')
     })
 })

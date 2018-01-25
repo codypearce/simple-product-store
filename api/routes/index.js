@@ -1,11 +1,12 @@
-var express = require('express'),
-    router = express.Router()
+var express = require('express')
+var router = express.Router()
 var Product = require('../models/product')
 
 router.use('/admin', require('./admin'))
 
 router.get('/', function (req, res) {
     Product.find(function (err, products) {
+        if (err) res.send(err)
         res.render('index', { products: products })
     })
 })
