@@ -1,29 +1,31 @@
 const express = require('express'),
-      app = express(),
-      methodOverride = require('method-override'),
-      bodyParser = require('body-parser'),
-      morgan = require('morgan'),
-      mongoose = require('mongoose');
+    app = express(),
+    methodOverride = require('method-override'),
+    bodyParser = require('body-parser'),
+    morgan = require('morgan'),
+    mongoose = require('mongoose')
 
+// Set up Database
+mongoose.connection.openUri('mongodb://localhost/simple-product-store')
 
-mongoose.connection.openUri('mongodb://localhost/simple-product-store');
+// Static File
+app.use(express.static(`${__dirname}/client`))
 
+// Loggging
+app.use(morgan('dev'))
 
-app.use(express.static(__dirname + '/client'));
+// Body Parser
+app.use(bodyParser.urlencoded({'extended': 'true'}))
+app.use(bodyParser.json())
+app.use(bodyParser.json({ type: 'application/vnd.api+json' }))
+app.use(methodOverride())
 
+// View Engine
+app.set('view engine', 'pug')
 
-app.use(morgan('dev'));
-app.use(bodyParser.urlencoded({'extended': 'true'}));
-app.use(bodyParser.json());
-app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
-app.use(methodOverride());
-
-app.set('view engine', 'pug');
-
-// routes
+// Route
 app.use(require('./api/routes'))
 
-const port = 3000;
-app.listen(port);
-// app.listen(process.env.PORT, process.env.IP);
-console.log('Now Listening on port: ' + port);
+const port = process.env.PORT || 3000
+app.listen(port)
+console.log('Now Listening on port: ' + port)
