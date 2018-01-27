@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const Product = require('../models/product')
 const path = require('path')
+
 var multer = require('multer')
 var dest = 'client/productImages/'
 var storage = multer.diskStorage({
@@ -17,6 +18,7 @@ var upload = multer({
         checkFileType(file, cb)
     }
 }).single('imageUpload')
+
 function checkFileType (file, cb) {
     // Allowed Ext
     const filetypes = /jpeg|jpg|png|gif/
@@ -30,6 +32,7 @@ function checkFileType (file, cb) {
         return cb('Error: Images only')
     }
 }
+
 router.get('/', function (req, res) {
     Product.find(function (err, products) {
         if (err) res.send(err)
