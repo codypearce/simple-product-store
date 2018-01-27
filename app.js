@@ -2,11 +2,9 @@ const express = require('express'),
     app = express(),
     methodOverride = require('method-override'),
     bodyParser = require('body-parser'),
-    morgan = require('morgan'),
-    mongoose = require('mongoose')
+    morgan = require('morgan')
 
-// Set up Database
-mongoose.connection.openUri('mongodb://localhost/simple-product-store')
+var {mongoose} = require('./api/db/mongoose')
 
 // Static File
 app.use(express.static(`${__dirname}/client`))
