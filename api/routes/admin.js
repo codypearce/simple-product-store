@@ -65,7 +65,10 @@ router.post('/products', function (req, res) {
                 imgLink: imgName,
                 description: req.body.description
             }, function (err, product) {
-                if (err) res.send(err)
+                if (err) {
+                    return res.status(400).send(err)
+                }
+                return res.send(product)
             })
         }
     })
