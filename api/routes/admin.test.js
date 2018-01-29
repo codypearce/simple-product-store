@@ -9,7 +9,7 @@ const Product = require('../models/product')
 
 describe('Admin', () => {
     describe('Create Product', () => {
-        it('should create a product', (done) => {
+        it('should create a product without errors', (done) => {
             const testProduct = {
                 title: 'test',
                 slug: 'test',
@@ -26,8 +26,9 @@ describe('Admin', () => {
                 .field('externalLink', testProduct.externalLink)
                 .field('description', testProduct.description)
                 .end((err, res) => {
-                    if (err) console.log(err.response.body.errmsg)
+                    if (err) console.log('MONGOOSE ERR: ', err.response.body.errmsg)
                     expect(res).to.have.status(200)
+                    expect(res.body).to.not.equal(null)
                     done()
                 })
         })
