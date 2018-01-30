@@ -4,11 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon app.js",
-    "start": "node app.js",
+    "dev": "SET NODE_ENV=dev && nodemon app.js",
+    "start": "SET NODE_ENV=dev && node app.js",
     "lint": "./node_modules/.bin/eslint \"./{,!(node_modules)/**/}*.js\"",
-    "test": "mocha \"./{,!(node_modules)/**/}*.test.js\" --exit",
-    "testWatch": "mocha -w \"./{,!(node_modules)/**/}*.test.js\" --reporter spec"
+    "test": "NODE_ENV=test && mocha \"./{,!(node_modules)/**/}*.test.js\" --exit",
+    "testWatch": "NODE_ENV=test && mocha -w \"./{,!(node_modules)/**/}*.test.js\" --reporter spec"
   },
   "repository": {
     "type": "git",
