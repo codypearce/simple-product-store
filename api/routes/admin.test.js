@@ -17,6 +17,12 @@ const testProduct = {
 
 describe('Admin', () => {
     describe('Create Product', () => {
+        before(() => {
+            Product.remove({}, function (err) {
+                if (err) throw err
+                console.log('Drop Collection')
+            })
+        })
         it('should create a product without errors', (done) => {
             chai.request(app)
                 .post('/admin/products')
