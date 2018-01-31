@@ -16,6 +16,8 @@ const testProduct = {
 }
 
 describe('Admin', () => {
+    it('should GET "/admin"')
+
     describe('Create Product', () => {
         before(() => {
             Product.remove({}, function (err) {
@@ -23,6 +25,7 @@ describe('Admin', () => {
                 console.log('Drop Collection')
             })
         })
+        it('should GET /admin/product add page')
         it('should create a product without errors', (done) => {
             chai.request(app)
                 .post('/admin/products')
@@ -57,5 +60,13 @@ describe('Admin', () => {
                     done()
                 })
         })
+    })
+    describe('Edit a product', () => {
+        it('should GET "/admin/edit/productID"')
+        it('should edit a product')
+    })
+    describe('Delete a product', () => {
+        it('should GET /admin/delete/productID')
+        it('should delete a product')
     })
 })
