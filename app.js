@@ -10,7 +10,9 @@ var {mongoose} = require('./api/db/mongoose')
 app.use(express.static(`${__dirname}/client`))
 
 // Loggging
-app.use(morgan('dev'))
+if (process.env.NODE_ENV === 'dev') {
+    app.use(morgan('dev'))
+}
 
 // Body Parser
 app.use(bodyParser.urlencoded({'extended': 'true'}))

@@ -20,9 +20,9 @@ describe('Admin', () => {
 
     describe('Create Product', () => {
         before(() => {
+            // Reset product collection before adding
             Product.remove({}, function (err) {
                 if (err) throw err
-                console.log('Drop Collection')
             })
         })
         it('should GET /admin/product add page')
