@@ -48,6 +48,17 @@ router.get('/', function (req, res) {
     })
 })
 
+router.get('/products', function (req, res) {
+    Product.find(function (err, products) {
+        if (err) res.send(err)
+
+        let sorted = products.sort(function (a, b) {
+            return new Date(b.createdAt) - new Date(a.createdAt)
+        })
+        res.send(sorted)
+    })
+})
+
 router.post('/products', function (req, res) {
     let imgName
     upload(req, res, (err) => {
