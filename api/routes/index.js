@@ -16,8 +16,10 @@ router.get('/products/:slug', (req, res) => {
     Product.findOne({
         slug: req.params.slug
     }, (err, product) => {
-        if (err) res.send(err)
-
+        if (!product) {
+            res.status.send(404)
+        }
+        if (err) res.status(400).send(err)
         res.render('product', {product: product})
     })
 })

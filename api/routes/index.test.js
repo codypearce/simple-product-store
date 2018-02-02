@@ -17,5 +17,8 @@ describe('Index', () => {
                 done()
             })
     })
-    it('should return with correct product page')
+    describe('Product page', () => {
+        it('should return with correct product page')
+        it('should send 404 if no product is found')
+    })
 })
