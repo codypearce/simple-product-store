@@ -1,3 +1,5 @@
+var env = process.env.NODE_ENV || 'development'
+
 const express = require('express'),
     app = express(),
     methodOverride = require('method-override'),

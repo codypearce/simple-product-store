@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "SET NODE_ENV=dev && nodemon app.js",
-    "start": "SET NODE_ENV=dev && node app.js",
+    "dev": "NODE_ENV=dev && nodemon app.js",
+    "start": "NODE_ENV=dev && node app.js",
     "lint": "./node_modules/.bin/eslint \"./{,!(node_modules)/**/}*.js\"",
     "test": "NODE_ENV=test && mocha \"./{,!(node_modules)/**/}*.test.js\" --exit",
     "testWatch": "NODE_ENV=test && mocha -w \"./{,!(node_modules)/**/}*.test.js\" --reporter spec"

@@ -14,17 +14,34 @@ const testProduct = {
     externalLink: 'http://google.com',
     description: 'this is a test description'
 }
+const starterData = {
+    title: 'product1',
+    slug: 'product1',
+    price: 150,
+    externalLink: 'http://google.com',
+    description: 'this is a test description'
+}
 
 describe('Admin', () => {
     it('should GET "/admin"')
 
-    describe('Create Product', () => {
-        before(() => {
-            // Reset product collection before adding
-            Product.remove({}, function (err) {
-                if (err) throw err
+    before(() => {
+        // Reset product collection before adding
+        Product.remove({}, function (err) {
+            if (err) throw err
+        }).then(() => {
+            Product.create({
+                title: starterData.title,
+                slug: starterData.slug,
+                price: starterData.price,
+                externalLink: starterData.externalLink,
+                description: starterData.description
             })
         })
+    })
+
+
+    describe('Create Product', () => {
         it('should GET /admin/product add page')
         it('should create a product without errors', (done) => {
             chai.request(app)
@@ -46,6 +63,7 @@ describe('Admin', () => {
                     done()
                 })
         })
+
         it('should get duplicate key error with slug', (done) => {
             chai.request(app)
                 .post('/admin/products')
@@ -67,6 +85,7 @@ describe('Admin', () => {
     })
     describe('Delete a product', () => {
         it('should GET /admin/delete/productID')
-        it('should delete a product')
+        it('should delete a product') // Check if product is no longer in database
+        it('should return 404 if no product')
     })
 })
