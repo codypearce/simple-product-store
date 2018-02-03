@@ -40,6 +40,18 @@ describe('Admin', () => {
         })
     })
 
+    describe('GET /products', (done) => {
+        it('should get all products', (done) => {
+            chai.request(app)
+                .get('/admin/products')
+                .end((err, res) => {
+                    if (err) console.log('MONGOOSE ERR: ', err.response.body.errmsg)
+                    expect(res).to.have.status(200)
+                    expect(res.body).to.have.length(2)
+                    done()
+                })
+        })
+    })
 
     describe('Create Product', () => {
         it('should GET /admin/product add page')
@@ -63,7 +75,15 @@ describe('Admin', () => {
                     done()
                 })
         })
-
+        it('should not create a product without data', (done) => {
+            chai.request(app)
+                .post('/admin/products')
+                .end((err, res) => {
+                    if (err) expect(err.status).to.equal(400)
+                    expect(res).to.have.status(400)
+                    done()
+                })
+        })
         it('should get duplicate key error with slug', (done) => {
             chai.request(app)
                 .post('/admin/products')
