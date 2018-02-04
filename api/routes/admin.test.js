@@ -92,7 +92,7 @@ describe('Admin', () => {
         it('should delete a product') // Check if product is no longer in database
         it('should return 404 if no product')
     })
-    describe('GET /users/profile', (done) => {
+    describe('GET /admin/users/profile', (done) => {
         it('should return user if authenticated', (done) => {
             chai.request(app)
                 .get('/admin/users/profile')
@@ -113,6 +113,52 @@ describe('Admin', () => {
 
                     expect(res.body).to.equal({})
                     expect(res).to.have.status(401)
+                    done()
+                })
+        })
+    })
+
+    describe('POST /admin/users', () => {
+        it('should create a user', (done) => {
+            var email = "test2@gmail.com"
+            var password = '1234'
+
+            chai.request(app)
+                .post('/admin/users')
+                .field('email', email)
+                .field('password', password)
+                .end((err, res) => {
+                    if (err) console.log('MONGOOSE ERR: ', err.response.body.errmsg)
+
+                    expect(res.headers['x-auth']).to.exist()
+                    expect(res.body.email).to.equal(email)
+
+                    done()
+                })
+        })
+        it('should return validation error if request is invalid', (done) => {
+            chai.request(app)
+                .post('/admin/users')
+                .field('email', 'test')
+                .field('password', '432')
+                .end((err, res) => {
+                    if (err) console.log('MONGOOSE ERR: ', err.response.body.errmsg)
+
+                    expect(res).to.have.status(400)
+
+                    done()
+                })
+        })
+        it('should not create a user if email is already in use', (done) => {
+            chai.request(app)
+                .post('/admin/users')
+                .field('email', testUser.email)
+                .field('password', '4323423')
+                .end((err, res) => {
+                    if (err) console.log('MONGOOSE ERR: ', err.response.body.errmsg)
+
+                    expect(res).to.have.status(400)
+
                     done()
                 })
         })
