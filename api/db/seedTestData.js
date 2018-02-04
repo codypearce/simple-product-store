@@ -1,4 +1,6 @@
 const Product = require('../models/product')
+const User = require('../models/user')
+const jwt = require('jsonwebtoken')
 
 const testProduct = {
     title: 'test',
@@ -15,6 +17,15 @@ const starterData = {
     description: 'this is a test description'
 }
 
+const testUser = {
+    email: 'test@gmail.com',
+    password: 'test123',
+    tokens: [{
+        access: 'auth',
+        token: jwt.sign({password: 'test123', access: 'auth'}, 'test').toString()
+    }]
+}
+
 const populateProducts =  function(done) {
     Product.create({
         title: starterData.title,
@@ -25,11 +36,21 @@ const populateProducts =  function(done) {
     }, function(err, product) {
         done()
     })
+}
 
-
+const populateUsers =  function(done) {
+    User.create({
+        email: testUser.title,
+        password: testUser.password,
+        tokens: testUser.tokens,
+    }, function(err, product) {
+        done()
+    })
 }
 
 module.exports = {
     populateProducts,
-    testProduct
+    populateUsers,
+    testProduct,
+    testUser
 }

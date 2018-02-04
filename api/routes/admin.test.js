@@ -7,7 +7,7 @@ chai.use(chaiHttp)
 const { app } = require('../../app')
 const Product = require('../models/product')
 
-const {populateProducts, testProduct} = require('../db/seedTestData')
+const {populateProducts, testProduct, testUser} = require('../db/seedTestData')
 
 
 describe('Admin', () => {
@@ -19,6 +19,8 @@ describe('Admin', () => {
             if (err) throw err
         }).then(() => {
             populateProducts(done)
+            // Should remove users beforehand
+            populateUsers(done)
         })
     })
 
@@ -90,4 +92,19 @@ describe('Admin', () => {
         it('should delete a product') // Check if product is no longer in database
         it('should return 404 if no product')
     })
+    describe('GET /users/profile', (done) => {
+        it('should return user if authenticated', (done) => {
+            chai.request(app)
+                .get('/admin/users/profile')
+                .set('x-auth', testUser.tokens.token)
+                .end((err, res) => {
+                    if (err) console.log('MONGOOSE ERR: ', err.response.body.errmsg)
+
+                    expect(res).to.have.status(200)
+                    expect(res.body.email).toBe(testUser.email)
+                })
+        })
+        it('should return 401 if not authenticated')
+    })
+
 })
