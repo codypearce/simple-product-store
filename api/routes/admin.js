@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const Product = require('../models/product')
+const User = require('../models/user')
 const path = require('path')
 
 var multer = require('multer')
@@ -45,6 +46,17 @@ router.get('/', function (req, res) {
         res.render('admin/index', {
             products: sorted
         })
+    })
+})
+router.post('/users', function(req, res) {
+    var body = req.body;
+    User.create({
+        user: body.user,
+        password: body.password
+    }, function(err, user) {
+        if(err) return res.send(400)
+
+        res.send(user)
     })
 })
 
