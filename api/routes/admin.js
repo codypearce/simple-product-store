@@ -67,6 +67,21 @@ router.get('/users/profile', authenticate, (req, res) => {
     res.send(req.user)
 })
 
+router.post('/users/login', (req, res) => {
+    var body = req.body;
+    var user = {
+        email: body.email,
+        password: body.password
+    }
+    User.findByCredentials(user.email, user.password).then((user) => {
+        user.generateAuthToken().then((token) => {
+            res.header('x-auth', token).send(user)
+        })
+    }).catch((e) => {
+        res.send(400)
+    })
+})
+
 router.get('/products', function (req, res) {
     Product.find(function (err, products) {
         if (err) res.send(err)
