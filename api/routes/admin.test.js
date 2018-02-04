@@ -164,4 +164,33 @@ describe('Admin', () => {
         })
     })
 
+    describe('POST /admin/users/login', () => {
+        it('should login user and return auth token', (done) => {
+            chai.request(app)
+                .post('/admin/users/login')
+                .field('email', testUser.email)
+                .field('password', testUser.password)
+                .end((err, res) => {
+                    if (err) console.log('MONGOOSE ERR: ', err.response.body.errmsg)
+
+                    expect(res).to.have.status(200)
+                    done()
+                })
+        })
+        it('should reject invalid login', (done) => {
+            chai.request(app)
+                .post('/admin/users/login')
+                .field('email', testUser.email)
+                .field('password', '234234')
+                .end((err, res) => {
+                    if (err) console.log('MONGOOSE ERR: ', err.response.body.errmsg)
+
+                    expect(res).to.have.status(401)
+                    done()
+                })
+
+
+        })
+    })
+
 })
