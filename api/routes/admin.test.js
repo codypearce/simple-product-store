@@ -7,36 +7,18 @@ chai.use(chaiHttp)
 const { app } = require('../../app')
 const Product = require('../models/product')
 
-const testProduct = {
-    title: 'test',
-    slug: 'test',
-    price: 299,
-    externalLink: 'http://google.com',
-    description: 'this is a test description'
-}
-const starterData = {
-    title: 'product1',
-    slug: 'product1',
-    price: 150,
-    externalLink: 'http://google.com',
-    description: 'this is a test description'
-}
+const {populateProducts, testProduct} = require('../db/seedTestData')
+
 
 describe('Admin', () => {
     it('should GET "/admin"')
 
-    before(() => {
+    before((done) => {
         // Reset product collection before adding
         Product.remove({}, function (err) {
             if (err) throw err
         }).then(() => {
-            Product.create({
-                title: starterData.title,
-                slug: starterData.slug,
-                price: starterData.price,
-                externalLink: starterData.externalLink,
-                description: starterData.description
-            })
+            populateProducts(done)
         })
     })
 
@@ -47,7 +29,7 @@ describe('Admin', () => {
                 .end((err, res) => {
                     if (err) console.log('MONGOOSE ERR: ', err.response.body.errmsg)
                     expect(res).to.have.status(200)
-                    expect(res.body).to.have.length(2)
+                    expect(res.body).to.have.length(1)
                     done()
                 })
         })

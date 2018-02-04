@@ -35,7 +35,7 @@ var userSchema = new Schema({
     timestamps: true
 })
 // Override toJson method so we dont send the token or password back
-userSchema.methos.toJSON = function () {
+userSchema.methods.toJSON = function () {
     var user = this
     var userObject = user.toObject()
     var newUserObj = {
