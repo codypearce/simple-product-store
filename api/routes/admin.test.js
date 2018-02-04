@@ -7,7 +7,7 @@ chai.use(chaiHttp)
 const { app } = require('../../app')
 const Product = require('../models/product')
 
-const {populateProducts, testProduct, testUser} = require('../db/seedTestData')
+const {populateProducts, populateUsers, testProduct, testUser} = require('../db/seedTestData')
 
 
 describe('Admin', () => {
@@ -101,10 +101,21 @@ describe('Admin', () => {
                     if (err) console.log('MONGOOSE ERR: ', err.response.body.errmsg)
 
                     expect(res).to.have.status(200)
-                    expect(res.body.email).toBe(testUser.email)
+                    expect(res.body.email).to.equal(testUser.email)
+                    done()
                 })
         })
-        it('should return 401 if not authenticated')
+        it('should return 401 if not authenticated', (done) => {
+            chai.request(app)
+                .get('/admin/users/profile')
+                .end((err, res) => {
+                    if (err) console.log('MONGOOSE ERR: ', err.response.body.errmsg)
+
+                    expect(res.body).to.equal({})
+                    expect(res).to.have.status(401)
+                    done()
+                })
+        })
     })
 
 })
