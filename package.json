@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/codypearce/simple-product-store#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.17.2",
     "express": "^4.15.3",
     "jsonwebtoken": "^8.1.1",
