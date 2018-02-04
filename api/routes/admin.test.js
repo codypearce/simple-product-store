@@ -9,7 +9,6 @@ const Product = require('../models/product')
 
 const {populateProducts, populateUsers, testProduct, testUser} = require('../db/seedTestData')
 
-
 describe('Admin', () => {
     it('should GET "/admin"')
 
@@ -92,6 +91,20 @@ describe('Admin', () => {
         it('should delete a product') // Check if product is no longer in database
         it('should return 404 if no product')
     })
+
+    describe('GET /admin/login', () => {
+        it('should get return 200 and render login page', (done) => {
+            chai.request(app)
+                .get('/admin/login')
+                .end((err, res) => {
+                    if (err) console.log(err)
+
+                    expect(res).to.have.status(200)
+                    done()
+                })
+        })
+    })
+
     describe('GET /admin/users/profile', (done) => {
         it('should return user if authenticated', (done) => {
             chai.request(app)
@@ -120,7 +133,7 @@ describe('Admin', () => {
 
     describe('POST /admin/users', () => {
         it('should create a user', (done) => {
-            var email = "test2@gmail.com"
+            var email = 'test2@gmail.com'
             var password = '1234'
 
             chai.request(app)
@@ -193,8 +206,16 @@ describe('Admin', () => {
 
     describe('DELETE /admin/users/token', () => {
         it('should remove auth token on logout', (done) => {
-            
+            chai.request(app)
+                .post('/admin/users/login')
+                .field('email', testUser.email)
+                .field('password', testUser.password)
+                .end((err, res) => {
+                    if (err) console.log('MONGOOSE ERR: ', err.response.body.errmsg)
+
+                    expect(res).to.have.status(200)
+                    done()
+                })
         })
     })
-
 })
