@@ -50,6 +50,11 @@ router.get('/', function (req, res) {
     })
 })
 
+router.get('/admin/login', function (req, res) {
+    res.render('admin/login')
+})
+
+// Create a User Route
 router.post('/users', function (req, res) {
     var body = req.body
     User.create({
@@ -63,12 +68,14 @@ router.post('/users', function (req, res) {
     })
 })
 
+// Get Profile details
 router.get('/users/profile', authenticate, (req, res) => {
     res.send(req.user)
 })
 
+// Login user
 router.post('/users/login', (req, res) => {
-    var body = req.body;
+    var body = req.body
     var user = {
         email: body.email,
         password: body.password
@@ -81,6 +88,8 @@ router.post('/users/login', (req, res) => {
         res.send(400)
     })
 })
+
+// Log out Route
 router.delete('/users/profile/token', authenticate, (req, res) => {
     req.user.removeToken(req.token).then(() => {
         res.send(200)
