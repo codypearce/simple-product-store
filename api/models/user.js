@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 const validator = require('validator')
+const jwt = require('jsonwebtoken')
 
 var userSchema = new Schema({
     email: {
@@ -32,5 +33,27 @@ var userSchema = new Schema({
 }, {
     timestamps: true
 })
+// Override toJson method so we dont send the token or password back
+userSchema.methos.toJSON = function () {
+    var user = this
+    var userObject = user.toObject()
+    var newUserObj = {
+        _id: userObject._id,
+        email: userObject.email
+    }
+    return newUserObj
+}
+
+userSchema.methods.generateAuthToken = function () {
+    var user = this
+    var access = 'auth'
+    var token = jwt.sign({_id: user._id.toHextString(), access}, 'test').toString()
+
+    user.tokens.push({access, token})
+
+    return user.save().then(() => {
+        return token
+    })
+}
 
 module.exports = mongoose.model('User', userSchema)

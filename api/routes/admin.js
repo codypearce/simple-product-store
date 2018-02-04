@@ -48,15 +48,17 @@ router.get('/', function (req, res) {
         })
     })
 })
-router.post('/users', function(req, res) {
-    var body = req.body;
+
+router.post('/users', function (req, res) {
+    var body = req.body
     User.create({
         user: body.user,
         password: body.password
-    }, function(err, user) {
-        if(err) return res.send(400)
-
-        res.send(user)
+    }, function (err, user) {
+        if (err) return res.send(400)
+        return user.generateAuthToken().then((token) => {
+            res.header('x-auth', token).send(user)
+        })
     })
 })
 
