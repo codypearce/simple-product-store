@@ -61,6 +61,19 @@ router.post('/users', function (req, res) {
         })
     })
 })
+router.get('/users/profile', (req, res) => {
+    var token = req.header('x-auth')
+
+    User.findByToken(token).then((user) => {
+        if(!user) {
+            return Promise.reject();
+        }
+
+        res.send(user)
+    }).catch((e) => {
+        res.send(401)
+    })
+})
 
 router.get('/products', function (req, res) {
     Product.find(function (err, products) {
