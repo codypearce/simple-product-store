@@ -81,6 +81,13 @@ router.post('/users/login', (req, res) => {
         res.send(400)
     })
 })
+router.delete('/users/profile/token', authenticate, (req, res) => {
+    req.user.removeToken(req.token).then(() => {
+        res.send(200)
+    }, () => {
+        res.send(401)
+    })
+})
 
 router.get('/products', function (req, res) {
     Product.find(function (err, products) {
