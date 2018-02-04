@@ -191,4 +191,10 @@ describe('Admin', () => {
         })
     })
 
+    describe('DELETE /admin/users/token', () => {
+        it('should remove auth token on logout', (done) => {
+            
+        })
+    })
+
 })
