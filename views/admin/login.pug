@@ -1,0 +1,19 @@
+extends ./layout
+
+block links
+	a(href="/" class="link") Back to Site
+
+block content
+	h3(class="mb-4").text-center Login
+	.d-flex.justify-content-center.row
+		.col-4
+			.form-group.input-container
+				input.form-control(type="text", aria-describedby="Email", placeholder="Email" name="email")
+	.d-flex.justify-content-center.row
+		.col-4
+			.form-group.input-container
+				input.form-control(type="text", aria-describedby="Password", placeholder="Password" name="password")
+	.d-flex.justify-content-center.row
+		button(class="btn btn-outline-success" type=submit) Login		
+
+	
