@@ -177,10 +177,10 @@ describe('Admin', () => {
         })
     })
 
-    describe('POST /admin/users/login', () => {
+    describe('POST /admin/login', () => {
         it('should login user and return auth token', (done) => {
             chai.request(app)
-                .post('/admin/users/login')
+                .post('/admin/login')
                 .field('email', testUser.email)
                 .field('password', testUser.password)
                 .end((err, res) => {
@@ -192,7 +192,7 @@ describe('Admin', () => {
         })
         it('should reject invalid login', (done) => {
             chai.request(app)
-                .post('/admin/users/login')
+                .post('/admin/login')
                 .field('email', testUser.email)
                 .field('password', '234234')
                 .end((err, res) => {

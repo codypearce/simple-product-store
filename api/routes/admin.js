@@ -74,7 +74,7 @@ router.get('/users/profile', authenticate, (req, res) => {
 })
 
 // Login user
-router.post('/users/login', (req, res) => {
+router.post('/login', (req, res) => {
     var body = req.body
     var user = {
         email: body.email,
@@ -85,6 +85,7 @@ router.post('/users/login', (req, res) => {
             res.header('x-auth', token).send(user)
         })
     }).catch((e) => {
+        console.log('failed to login')
         res.send(400)
     })
 })
