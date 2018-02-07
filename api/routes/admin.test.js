@@ -104,6 +104,18 @@ describe('Admin', () => {
                 })
         })
     })
+    describe('GET /admin/signup', () => {
+        it('should get return 200 and render signup page', (done) => {
+            chai.request(app)
+                .get('/admin/signup')
+                .end((err, res) => {
+                    if (err) console.log(err)
+
+                    expect(res).to.have.status(200)
+                    done()
+                })
+        })
+    })
 
     describe('GET /admin/users/profile', (done) => {
         it('should return user if authenticated', (done) => {
