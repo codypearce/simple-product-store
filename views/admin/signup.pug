@@ -1,11 +1,11 @@
 extends ./layout
 
 block links
-	a(href="/admin/signup" class="link") Signup
+	a(href="/admin/login" class="link") Login
 	a(href="/" class="link") Back to Site
 
 block content
-	h3(class="mb-4").text-center Login
+	h3(class="mb-4").text-center Create Account
 	.d-flex.justify-content-center.row
 		.col-4
 			.form-group.input-container
@@ -15,7 +15,7 @@ block content
 			.form-group.input-container
 				input.form-control(type="text", aria-describedby="Password", placeholder="Password" name="password")
 	.d-flex.justify-content-center.row
-		button(class="btn btn-outline-success" type=submit id="loginBtn") Login		
+		button(class="btn btn-outline-success" type=submit id="loginBtn") Signup		
 
 block scripts
 	script(src="/js/login.js")
