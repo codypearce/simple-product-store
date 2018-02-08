@@ -1,6 +1,9 @@
 extends ./layout
 
 block links
+	a(href="/admin" class="link") Products
+	a(href="/user/profile" class="link") Profile
+	a(href="/users" class="link") Users
 	a(href="/" class="link") Back to Site
 
 block content
@@ -34,5 +37,3 @@ block content
 		div(class="d-flex justify-content-center align-items-center")
 			p(class="text-muted") You don't have any products!
 			
-
-	

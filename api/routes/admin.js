@@ -61,10 +61,15 @@ router.get('/signup', function (req, res) {
 router.post('/users', function (req, res) {
     var body = req.body
     User.create({
-        user: body.user,
+        email: body.email,
         password: body.password
     }, function (err, user) {
-        if (err) return res.send(400)
+        if (err) {
+            console.log(err)
+            return res.sendStatus(400)
+        }
+
+        console.log(user)
         return user.generateAuthToken().then((token) => {
             res.header('x-auth', token).send(user)
         })
@@ -73,6 +78,7 @@ router.post('/users', function (req, res) {
 
 // Get Profile details
 router.get('/users/profile', authenticate, (req, res) => {
+    console.log(req.user)
     res.send(req.user)
 })
 

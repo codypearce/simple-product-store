@@ -30,7 +30,7 @@ function login () {
 function signup () {
     var formData = getFormData()
 
-    fetch('/admin/signup', {
+    fetch('/admin/users', {
         method: 'POST',
         body: JSON.stringify(formData),
         headers: new Headers({
