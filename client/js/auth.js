@@ -14,7 +14,7 @@ window.onload = function () {
 }
 // Submitting the Form
 function login () {
-    var formData = getFormData()
+    var formData = utils.getFormData('email', 'password')
 
     fetch('/admin/login', {
         method: 'POST',
@@ -28,7 +28,7 @@ function login () {
 }
 
 function signup () {
-    var formData = getFormData()
+    var formData = utils.getFormData('email', 'password')
 
     fetch('/admin/users', {
         method: 'POST',
@@ -39,12 +39,4 @@ function signup () {
     })
         .then(res => window.location.href = '/admin')
         .catch(error => console.error('Error', error))
-}
-
-function getFormData () {
-    var obj = {
-        email: utils.getVal('email'),
-        password: utils.getVal('password')
-    }
-    return obj
 }

@@ -4,5 +4,12 @@ const utils = {
     },
     getInput (name) {
         return document.getElementsByName(name)[0]
+    },
+    getFormData (...fields) {
+        var obj = {}
+        fields.forEach((field) => {
+            obj[field] = this.getVal(field)
+        })
+        return obj
     }
 }

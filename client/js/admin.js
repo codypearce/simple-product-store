@@ -24,8 +24,8 @@ function errorsExist () {
 }
 // Submitting the Form
 function submitForm () {
-    var formData = getFormData()
-    console.log(formData)
+    var formData = utils.getFormData('title', 'slug', 'price', 'externalLink', 'description')
+
     fetch('/admin/products', {
         method: 'POST',
         body: JSON.stringify(formData),
@@ -33,19 +33,8 @@ function submitForm () {
             'Content-Type': 'application/json'
         })
     })
-        .then(res => window.location.href = '/admin')
+        .then(res => console.log('test'))
         .catch(error => console.error('Error', error))
-}
-
-function getFormData () {
-    var obj = {
-        title: utils.utils.getVal('title'),
-        slug: utils.getVal('slug'),
-        price: utils.getVal('price'),
-        externalLink: utils.getVal('externalLink'),
-        description: utils.getVal('description')
-    }
-    return obj
 }
 
 // Validating the form
