@@ -39,33 +39,33 @@ function submitForm () {
 
 function getFormData () {
     var obj = {
-        title: getVal('title'),
-        slug: getVal('slug'),
-        price: getVal('price'),
-        externalLink: getVal('externalLink'),
-        description: getVal('description')
+        title: utils.utils.getVal('title'),
+        slug: utils.getVal('slug'),
+        price: utils.getVal('price'),
+        externalLink: utils.getVal('externalLink'),
+        description: utils.getVal('description')
     }
     return obj
 }
 
 // Validating the form
 function setUpValidation () {
-    addBlur(getInput('title'), titleValidation)
-    addBlur(getInput('slug'), slugValidation)
-    addBlur(getInput('price'), priceValidation)
-    addBlur(getInput('externalLink'), externalLinkValidation)
-    addBlur(getInput('description'), descriptionValidation)
+    addBlur(utils.getInput('title'), titleValidation)
+    addBlur(utils.getInput('slug'), slugValidation)
+    addBlur(utils.getInput('price'), priceValidation)
+    addBlur(utils.getInput('externalLink'), externalLinkValidation)
+    addBlur(utils.getInput('description'), descriptionValidation)
 }
 function addBlur (el, validateFunction) {
     return el.addEventListener('blur', (e) => validateFunction(e))
 }
 
 function checkForm () {
-    titleValidation(null, getInput('title'))
-    slugValidation(null, getInput('slug'))
-    priceValidation(null, getInput('price'))
-    externalLinkValidation(null, getInput('externalLink'))
-    descriptionValidation(null, getInput('description'))
+    titleValidation(null, utils.getInput('title'))
+    slugValidation(null, utils.getInput('slug'))
+    priceValidation(null, utils.getInput('price'))
+    externalLinkValidation(null, utils.getInput('externalLink'))
+    descriptionValidation(null, utils.getInput('description'))
 }
 
 function titleValidation (e, input) {

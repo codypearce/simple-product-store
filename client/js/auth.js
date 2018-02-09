@@ -43,11 +43,8 @@ function signup () {
 
 function getFormData () {
     var obj = {
-        email: getVal('email'),
-        password: getVal('password')
+        email: utils.getVal('email'),
+        password: utils.getVal('password')
     }
     return obj
-}
-function getVal (name) {
-    return document.getElementsByName(name)[0].value
 }
