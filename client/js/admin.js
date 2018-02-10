@@ -39,14 +39,11 @@ function submitForm () {
 
 // Validating the form
 function setUpValidation () {
-    addBlur(utils.getInput('title'), titleValidation)
-    addBlur(utils.getInput('slug'), slugValidation)
-    addBlur(utils.getInput('price'), priceValidation)
-    addBlur(utils.getInput('externalLink'), externalLinkValidation)
-    addBlur(utils.getInput('description'), descriptionValidation)
-}
-function addBlur (el, validateFunction) {
-    return el.addEventListener('blur', (e) => validateFunction(e))
+    utils.addBlur(utils.getInput('title'), titleValidation)
+    utils.addBlur(utils.getInput('slug'), slugValidation)
+    utils.addBlur(utils.getInput('price'), priceValidation)
+    utils.addBlur(utils.getInput('externalLink'), externalLinkValidation)
+    utils.addBlur(utils.getInput('description'), descriptionValidation)
 }
 
 function checkForm () {

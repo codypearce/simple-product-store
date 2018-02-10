@@ -11,5 +11,8 @@ const utils = {
             obj[field] = this.getVal(field)
         })
         return obj
+    },
+    addBlur (el, validateFunction) {
+        return el.addEventListener('blur', (e) => validateFunction(e))
     }
 }
