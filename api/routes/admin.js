@@ -57,6 +57,17 @@ router.get('/signup', function (req, res) {
     res.render('admin/signup')
 })
 
+// Get Profile details
+router.get('/users', (req, res) => {
+    User.find((err, users) => {
+        if (err) res.send(err)
+
+        res.render('admin/users', {
+            users: users
+        })
+    })
+})
+
 // Create a User Route
 router.post('/users', function (req, res) {
     var body = req.body
