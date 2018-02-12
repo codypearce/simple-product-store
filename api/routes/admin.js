@@ -57,7 +57,7 @@ router.get('/signup', function (req, res) {
     res.render('admin/signup')
 })
 
-// Get Profile details
+// Get User page
 router.get('/users', (req, res) => {
     User.find((err, users) => {
         if (err) res.send(err)
