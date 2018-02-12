@@ -118,6 +118,16 @@ router.delete('/users/profile/token', authenticate, (req, res) => {
         res.send(401)
     })
 })
+// Delete User
+router.get('/users/delete/:userId', (req, res) => {
+    User.remove({
+        _id: req.params.userId
+    }, function (err, user) {
+        if (err) res.send(err)
+
+        res.redirect('/admin/users')
+    })
+})
 
 router.get('/products', function (req, res) {
     Product.find(function (err, products) {
