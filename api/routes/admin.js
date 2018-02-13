@@ -80,10 +80,18 @@ router.post('/users', function (req, res) {
             return res.sendStatus(400)
         }
 
-        console.log(user)
         return user.generateAuthToken().then((token) => {
             res.header('x-auth', token).send(user)
         })
+    })
+})
+
+// Get User page
+router.get('/users/add', (req, res) => {
+    User.find((err, users) => {
+        if (err) res.send(err)
+
+        res.render('admin/usersAdd')
     })
 })
 
