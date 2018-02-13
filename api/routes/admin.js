@@ -91,7 +91,7 @@ router.get('/users/add', (req, res) => {
     User.find((err, users) => {
         if (err) res.send(err)
 
-        res.render('admin/usersAdd')
+        res.render('admin/addUser')
     })
 })
 
