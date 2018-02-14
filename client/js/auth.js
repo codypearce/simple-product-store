@@ -2,21 +2,9 @@ window.onload = function () {
     let loginBtn = document.getElementById('loginBtn')
     let signupBtn = document.getElementById('signupBtn')
     let addUserBtn = document.getElementById('addUserBtn')
-    if (loginBtn) {
-        loginBtn.addEventListener('click', function (e) {
-            login()
-        })
-    }
-    if (signupBtn) {
-        signupBtn.addEventListener('click', function (e) {
-            signup()
-        })
-    }
-    if (addUserBtn) {
-        addUserBtn.addEventListener('click', function (e) {
-            addUser()
-        })
-    }
+    utils.clickFunction(loginBtn, login)
+    utils.clickFunction(signupBtn, signup)
+    utils.clickFunction(addUserBtn, addUser)
 }
 // Submitting the Form
 function login () {
