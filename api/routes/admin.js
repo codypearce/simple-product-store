@@ -86,6 +86,22 @@ router.post('/users', function (req, res) {
     })
 })
 
+// Add user
+router.post('/users/add', function (req, res) {
+    var body = req.body
+    User.create({
+        email: body.email,
+        password: body.password
+    }, function (err, user) {
+        if (err) {
+            console.log(err)
+            return res.sendStatus(400)
+        }
+
+        res.render('admin/users')
+    })
+})
+
 // Get User page
 router.get('/users/add', (req, res) => {
     User.find((err, users) => {
