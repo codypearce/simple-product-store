@@ -7,44 +7,28 @@ window.onload = function () {
     utils.clickFunction(addUserBtn, addUser)
 }
 // Submitting the Form
-function login () {
-    var formData = utils.getFormData('email', 'password')
+function fetchPostForm (formParams, route, redirect) {
+    var formData = utils.getFormData(...formParams)
 
-    fetch('/admin/login', {
+    fetch(route, {
         method: 'POST',
         body: JSON.stringify(formData),
         headers: new Headers({
             'Content-Type': 'application/json'
         })
     })
-        .then(res => window.location.href = '/admin')
+        .then(res => redirect ? window.location.href = '/admin' : console.log('success'))
         .catch(error => console.error('Error', error))
+}
+
+function login () {
+    fetchPostForm(['email', 'password'], '/admin/login', '/admin')
 }
 
 function signup () {
-    var formData = utils.getFormData('email', 'password')
-
-    fetch('/admin/users', {
-        method: 'POST',
-        body: JSON.stringify(formData),
-        headers: new Headers({
-            'Content-Type': 'application/json'
-        })
-    })
-        .then(res => window.location.href = '/admin')
-        .catch(error => console.error('Error', error))
+    fetchPostForm(['email', 'password'], '/admin/users', '/admin')
 }
 
 function addUser () {
-    var formData = utils.getFormData('email', 'password')
-
-    fetch('/admin/users', {
-        method: 'POST',
-        body: JSON.stringify(formData),
-        headers: new Headers({
-            'Content-Type': 'application/json'
-        })
-    })
-        .then(res => window.location.href = '/admin/users')
-        .catch(error => console.error('Error', error))
+    fetchPostForm(['email', 'password'], '/admin/users/add', '/admin/users')
 }
