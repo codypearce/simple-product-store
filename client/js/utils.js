@@ -19,5 +19,18 @@ const utils = {
         el.addEventListener('click', function (e) {
             func()
         })
+    },
+    fetchPostForm (formParams, route, redirect) {
+        var formData = this.getFormData(...formParams)
+
+        fetch(route, {
+            method: 'POST',
+            body: JSON.stringify(formData),
+            headers: new Headers({
+                'Content-Type': 'application/json'
+            })
+        })
+            .then(res => redirect ? window.location.href = '/admin' : console.log('success'))
+            .catch(error => console.error('Error', error))
     }
 }
