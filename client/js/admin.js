@@ -8,7 +8,7 @@ window.onload = function () {
             if (errorsExist()) {
                 createError(e.target, 'Please fix the errors above before submitting')
             } else {
-                submitForm()
+                utils.fetchPostForm(['title', 'slug', 'price', 'externalLink', 'description'], '/admin/product')
             }
         })
     }
@@ -22,28 +22,15 @@ function errorsExist () {
         return false
     }
 }
-// Submitting the Form
-function submitForm () {
-    var formData = utils.getFormData('title', 'slug', 'price', 'externalLink', 'description')
-
-    fetch('/admin/products', {
-        method: 'POST',
-        body: JSON.stringify(formData),
-        headers: new Headers({
-            'Content-Type': 'application/json'
-        })
-    })
-        .then(res => console.log('test'))
-        .catch(error => console.error('Error', error))
-}
 
 // Validating the form
 function setUpValidation () {
-    utils.addBlur(utils.getInput('title'), titleValidation)
-    utils.addBlur(utils.getInput('slug'), slugValidation)
-    utils.addBlur(utils.getInput('price'), priceValidation)
-    utils.addBlur(utils.getInput('externalLink'), externalLinkValidation)
-    utils.addBlur(utils.getInput('description'), descriptionValidation)
+    console.log('test')
+    utils.addBlur(utils.getInput('title'), validate.titleValidation)
+    utils.addBlur(utils.getInput('slug'), validate.slugValidation)
+    utils.addBlur(utils.getInput('price'), validate.priceValidation)
+    utils.addBlur(utils.getInput('externalLink'), validate.externalLinkValidation)
+    utils.addBlur(utils.getInput('description'), validate.descriptionValidation)
 }
 
 function checkForm () {
