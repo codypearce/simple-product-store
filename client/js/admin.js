@@ -1,17 +1,15 @@
 window.onload = function () {
     var submitBtn = document.getElementById('submitBtn')
-    if (submitBtn) {
-        submitBtn.addEventListener('click', function (e) {
-            e.preventDefault()
-            deleteError(e.target)
-            checkForm()
-            if (errorsExist()) {
-                createError(e.target, 'Please fix the errors above before submitting')
-            } else {
-                utils.fetchPostForm(['title', 'slug', 'price', 'externalLink', 'description'], '/admin/product')
-            }
-        })
-    }
+    utils.clickFunction(submitBtn, function () {
+        e.preventDefault()
+        deleteError(e.target)
+        checkForm()
+        if (errorsExist()) {
+            createError(e.target, 'Please fix the errors above before submitting')
+        } else {
+            utils.fetchPostForm(['title', 'slug', 'price', 'externalLink', 'description'], '/admin/product')
+        }
+    })
     setUpValidation()
 }
 function errorsExist () {
@@ -25,7 +23,6 @@ function errorsExist () {
 
 // Validating the form
 function setUpValidation () {
-    console.log('test')
     utils.addBlur(utils.getInput('title'), validate.titleValidation)
     utils.addBlur(utils.getInput('slug'), validate.slugValidation)
     utils.addBlur(utils.getInput('price'), validate.priceValidation)
@@ -42,7 +39,6 @@ function checkForm () {
 }
 
 // Create and display Form Errors
-
 function createInputError (inputDiv, errorMsg) {
     var errorSpan = document.createElement('span')
     errorSpan.classList.add('error')

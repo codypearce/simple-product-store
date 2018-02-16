@@ -15,10 +15,12 @@ const utils = {
     addBlur (el, validateFunction) {
         return el.addEventListener('blur', (e) => validateFunction(e))
     },
-    clickFunction (el, func) {
-        el.addEventListener('click', function (e) {
-            func()
-        })
+    clickFunction (el, cb) {
+        if (el) {
+            el.addEventListener('click', function (e) {
+                cb()
+            })
+        }
     },
     fetchPostForm (formParams, route, redirect) {
         var formData = this.getFormData(...formParams)
