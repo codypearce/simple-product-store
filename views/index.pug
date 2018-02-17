@@ -15,15 +15,15 @@ block content
 				.row
 					each product in products
 						.col-lg-4.col-md-6.col-12
-							a(href="/products/" + product.slug).resetAnchor
+							a(href="/products/" + product.slug).resetAnchor.product-container
 								if product.imgLink
 									.product-box
 										img(src='/productImages/' + product.imgLink)
 								else
 									.product-box
-								.d-flex.justify-content-between.align-items-center.mt-2
-									span #{product.title}
-									span.sub-text $#{product.price}
+								.d-flex.justify-content-between.align-items-center.product_text
+									span.product_title #{product.title}
+									span.product_price $#{product.price}
 			else
 				div(class="d-flex justify-content-center align-items-center")
 					p(class="text-muted") Sorry no products
