@@ -1,13 +1,16 @@
 window.onload = function () {
     var submitBtn = document.getElementById('submitBtn')
-    utils.clickFunction(submitBtn, function () {
+    utils.clickFunction(submitBtn, function (e) {
         e.preventDefault()
+
         deleteError(e.target)
+
         checkForm()
+
         if (errorsExist()) {
             createError(e.target, 'Please fix the errors above before submitting')
         } else {
-            utils.fetchPostForm(['title', 'slug', 'price', 'externalLink', 'description'], '/admin/product')
+            utils.fetchPostForm(['title', 'slug', 'price', 'externalLink', 'description'], '/admin/products')
         }
     })
     setUpValidation()

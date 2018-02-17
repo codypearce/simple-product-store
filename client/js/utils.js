@@ -18,7 +18,7 @@ const utils = {
     clickFunction (el, cb) {
         if (el) {
             el.addEventListener('click', function (e) {
-                cb()
+                cb(e)
             })
         }
     },
