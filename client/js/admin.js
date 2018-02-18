@@ -1,5 +1,12 @@
 window.onload = function () {
-    var submitBtn = document.getElementById('submitBtn')
+    let submitBtn = document.getElementById('submitBtn')
+    let catInput = utils.getInput('categories')
+    catInput.addEventListener('keypress', function (e) {
+        var key = e.which || e.keyCode
+        if (key === 13) {
+            addCategoryToView()
+        }
+    })
     utils.clickFunction(submitBtn, function (e) {
         e.preventDefault()
 
@@ -15,6 +22,16 @@ window.onload = function () {
     })
     setUpValidation()
 }
+function addCategoryToView () {
+    let val = utils.getVal('categories')
+    let categoryList = document.getElementById('categories-container')
+
+    let catSpan = document.createElement('span')
+    catSpan.classList.add('category-link')
+    catSpan.textContent = val
+    categoryList.appendChild(catSpan)
+}
+
 function errorsExist () {
     var errors = document.querySelectorAll('.error')
     if (errors.length > 0) {
