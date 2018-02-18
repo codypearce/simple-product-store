@@ -22,3 +22,26 @@
 .product_price {
 	font-size: 14px;
 }
+
+.submenu {
+	margin-top: 10px;
+}
+
+.categories {
+	display: flex;
+	flex-direction: row;
+
+}
+.category-link {
+	margin-right: 5px;
+	font-weight: bold;
+	font-size: 12px;
+	text-transform: uppercase;
+	border: 2px solid #333;
+	padding: 3px 5px;
+}
+.category-link:hover, .category-link.active {
+	cursor: pointer;
+	background: #333;
+	color: white;
+}
