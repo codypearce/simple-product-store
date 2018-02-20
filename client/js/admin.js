@@ -1,25 +1,35 @@
 window.onload = function () {
     let submitBtn = document.getElementById('submitBtn')
     let catInput = utils.getInput('categories')
-    let categoriesArr = []
     catInput.addEventListener('keypress', function (e) {
-        handleCategoryClick(e, categoriesArr)
+        handleCategoryClick(e)
+        console.log(categories.arr)
     })
     utils.clickFunction(submitBtn, function (e) {
         handleSubmit(e)
     })
     setUpValidation()
 }
+let categories = {
+    arr: [],
+    removeFromCategoriesArr (val) {
+        let i = this.arr.indexOf(val)
+        if (i != -1) {
+            this.arr.splice(i, 1)
+        }
+        console.log(this.arr)
+    }
+}
 function handleCategoryClick (e, categoriesArr) {
     var key = e.which || e.keyCode
     if (key === 13) {
-        if (categoriesArr.length >= 10) {
+        if (categories.arr.length >= 10) {
             deleteError(e.target)
             createError(e.target, 'Categories limited to 10')
             e.target.value = ''
             return
         }
-        addCategoryToView(categoriesArr)
+        addCategoryToView()
         e.target.value = ''
     }
 }
@@ -38,10 +48,10 @@ function handleSubmit (e) {
 }
 function addCategoryToView (categoriesArr) {
     let val = utils.getVal('categories')
-    if (categoriesArr.includes(val)) {
+    if (categories.arr.includes(val)) {
         return
     }
-    categoriesArr.push(val)
+    categories.arr.push(val)
 
     let categoryList = document.getElementById('categories-container')
 
@@ -50,14 +60,13 @@ function addCategoryToView (categoriesArr) {
     catSpan.classList.add('cateogry-link--admin')
     catSpan.textContent = val
     catSpan.addEventListener('click', function (e) {
-        deleteAdminCategory(e, val, categoriesArr)
+        deleteAdminCategory(e, val)
     })
     categoryList.appendChild(catSpan)
 }
-function deleteAdminCategory (e, val, categoriesArr) {
+function deleteAdminCategory (e, val) {
     e.target.remove()
-    categoriesArr.splice(1, 0, val)
-    console.log(val, categoriesArr)
+    categories.removeFromCategoriesArr(val)
 }
 
 function errorsExist () {
