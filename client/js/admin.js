@@ -5,6 +5,7 @@ window.onload = function () {
         var key = e.which || e.keyCode
         if (key === 13) {
             addCategoryToView()
+            e.target.value = ''
         }
     })
     utils.clickFunction(submitBtn, function (e) {
