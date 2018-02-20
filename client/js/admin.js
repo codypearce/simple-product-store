@@ -6,17 +6,7 @@ window.onload = function () {
         handleCategoryClick(e, categoriesArr)
     })
     utils.clickFunction(submitBtn, function (e) {
-        e.preventDefault()
-
-        deleteError(e.target)
-
-        checkForm()
-
-        if (errorsExist()) {
-            createError(e.target, 'Please fix the errors above before submitting')
-        } else {
-            utils.fetchPostForm(['title', 'slug', 'price', 'externalLink', 'description'], '/admin/products')
-        }
+        handleSubmit(e)
     })
     setUpValidation()
 }
@@ -33,20 +23,41 @@ function handleCategoryClick (e, categoriesArr) {
         e.target.value = ''
     }
 }
+function handleSubmit (e) {
+    e.preventDefault()
+
+    deleteError(e.target)
+
+    checkForm()
+
+    if (errorsExist()) {
+        createError(e.target, 'Please fix the errors above before submitting')
+    } else {
+        utils.fetchPostForm(['title', 'slug', 'price', 'externalLink', 'description'], '/admin/products')
+    }
+}
 function addCategoryToView (categoriesArr) {
     let val = utils.getVal('categories')
     if (categoriesArr.includes(val)) {
         return
     }
     categoriesArr.push(val)
-    console.log(categoriesArr)
+
     let categoryList = document.getElementById('categories-container')
 
     let catSpan = document.createElement('span')
     catSpan.classList.add('category-link')
     catSpan.classList.add('cateogry-link--admin')
     catSpan.textContent = val
+    catSpan.addEventListener('click', function (e) {
+        deleteAdminCategory(e, val, categoriesArr)
+    })
     categoryList.appendChild(catSpan)
+}
+function deleteAdminCategory (e, val, categoriesArr) {
+    e.target.remove()
+    categoriesArr.splice(1, 0, val)
+    console.log(val, categoriesArr)
 }
 
 function errorsExist () {
