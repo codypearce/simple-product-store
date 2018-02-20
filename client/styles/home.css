@@ -45,3 +45,10 @@
 	background: #333;
 	color: white;
 }
+.cateogry-link--admin {
+	margin-bottom: 5px;
+}
+.categories-container--admin {
+	display: flex;
+	flex-wrap: wrap;
+}

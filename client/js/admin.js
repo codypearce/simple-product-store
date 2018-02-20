@@ -35,6 +35,7 @@ function addCategoryToView (categoriesArr) {
 
     let catSpan = document.createElement('span')
     catSpan.classList.add('category-link')
+    catSpan.classList.add('cateogry-link--admin')
     catSpan.textContent = val
     categoryList.appendChild(catSpan)
 }
