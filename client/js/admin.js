@@ -1,10 +1,11 @@
 window.onload = function () {
     let submitBtn = document.getElementById('submitBtn')
     let catInput = utils.getInput('categories')
+    let categoriesArr = []
     catInput.addEventListener('keypress', function (e) {
         var key = e.which || e.keyCode
         if (key === 13) {
-            addCategoryToView()
+            addCategoryToView(categoriesArr)
             e.target.value = ''
         }
     })
@@ -23,8 +24,13 @@ window.onload = function () {
     })
     setUpValidation()
 }
-function addCategoryToView () {
+function addCategoryToView (categoriesArr) {
     let val = utils.getVal('categories')
+    if (categoriesArr.includes(val)) {
+        return
+    }
+    categoriesArr.push(val)
+    console.log(categoriesArr)
     let categoryList = document.getElementById('categories-container')
 
     let catSpan = document.createElement('span')
