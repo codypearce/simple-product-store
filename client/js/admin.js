@@ -3,15 +3,7 @@ window.onload = function () {
     let catInput = utils.getInput('categories')
     let categoriesArr = []
     catInput.addEventListener('keypress', function (e) {
-        var key = e.which || e.keyCode
-        if (key === 13) {
-            if (categoriesArr.length >= 10) {
-                deleteError(e.target)
-                createError(e.target, 'Categories limited to 10')
-            }
-            addCategoryToView(categoriesArr)
-            e.target.value = ''
-        }
+        handleCategoryClick(e, categoriesArr)
     })
     utils.clickFunction(submitBtn, function (e) {
         e.preventDefault()
@@ -27,6 +19,19 @@ window.onload = function () {
         }
     })
     setUpValidation()
+}
+function handleCategoryClick (e, categoriesArr) {
+    var key = e.which || e.keyCode
+    if (key === 13) {
+        if (categoriesArr.length >= 10) {
+            deleteError(e.target)
+            createError(e.target, 'Categories limited to 10')
+            e.target.value = ''
+            return
+        }
+        addCategoryToView(categoriesArr)
+        e.target.value = ''
+    }
 }
 function addCategoryToView (categoriesArr) {
     let val = utils.getVal('categories')
