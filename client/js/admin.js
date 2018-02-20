@@ -5,6 +5,10 @@ window.onload = function () {
     catInput.addEventListener('keypress', function (e) {
         var key = e.which || e.keyCode
         if (key === 13) {
+            if (categoriesArr.length >= 10) {
+                deleteError(e.target)
+                createError(e.target, 'Categories limited to 10')
+            }
             addCategoryToView(categoriesArr)
             e.target.value = ''
         }
