@@ -34,7 +34,7 @@ function checkFileType (file, cb) {
 }
 
 module.exports = function (app, passport) {
-    app.get('/admin', function (req, res) {
+    app.get('/admin', isLoggedIn, function (req, res) {
         Product.find(function (err, products) {
             if (err) res.send(err)
 
@@ -68,7 +68,7 @@ module.exports = function (app, passport) {
     })
 
     // Add user
-    app.post('/admin/users/add', function (req, res) {
+    app.post('/admin/users/add', isLoggedIn, function (req, res) {
         var body = req.body
         User.create({
             email: body.email,
@@ -84,7 +84,7 @@ module.exports = function (app, passport) {
     })
 
     // Get User page
-    app.get('/admin/users/add', (req, res) => {
+    app.get('/admin/users/add', isLoggedIn, (req, res) => {
         User.find((err, users) => {
             if (err) res.send(err)
 
@@ -93,7 +93,7 @@ module.exports = function (app, passport) {
     })
 
     // Get Profile details
-    app.get('/admin/users/profile', (req, res) => {
+    app.get('/admin/users/profile', isLoggedIn, (req, res) => {
         console.log(req.user)
         res.send(req.user)
     })
@@ -115,7 +115,7 @@ module.exports = function (app, passport) {
     })
 
     // Delete User
-    app.get('/admin/users/delete/:userId', (req, res) => {
+    app.get('/admin/users/delete/:userId', isLoggedIn, (req, res) => {
         User.remove({
             _id: req.params.userId
         }, function (err, user) {
@@ -125,7 +125,7 @@ module.exports = function (app, passport) {
         })
     })
 
-    app.get('/admin/products', function (req, res) {
+    app.get('/admin/products', isLoggedIn, function (req, res) {
         Product.find(function (err, products) {
             if (err) res.send(err)
 
@@ -136,7 +136,7 @@ module.exports = function (app, passport) {
         })
     })
 
-    app.post('/admin/products', function (req, res) {
+    app.post('/admin/products', isLoggedIn, function (req, res) {
         let imgName
         upload(req, res, (err) => {
             if (err) {
@@ -162,11 +162,11 @@ module.exports = function (app, passport) {
         })
     })
 
-    app.get('/admin/product/add', function (req, res) {
+    app.get('/admin/product/add', isLoggedIn, function (req, res) {
         res.render('admin/add')
     })
 
-    app.get('/admin/product/edit/:productID', (req, res) => {
+    app.get('/admin/product/edit/:productID', isLoggedIn, (req, res) => {
         Product.findById(req.params.productID, (err, product) => {
             if (err) res.send(err)
 
@@ -174,7 +174,7 @@ module.exports = function (app, passport) {
         })
     })
 
-    app.post('/admin/product/edit/:productID', function (req, res) {
+    app.post('/admin/product/edit/:productID', isLoggedIn, function (req, res) {
         let imgName
         upload(req, res, (err) => {
             if (err) {
@@ -201,7 +201,7 @@ module.exports = function (app, passport) {
         })
     })
 
-    app.get('/admin/product/delete/:productID', function (req, res) {
+    app.get('/admin/product/delete/:productID', isLoggedIn, function (req, res) {
         Product.remove({
             _id: req.params.productID
         }, function (err, product) {
