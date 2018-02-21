@@ -3,7 +3,6 @@ window.onload = function () {
     let catInput = utils.getInput('categories')
     catInput.addEventListener('keypress', function (e) {
         handleCategoryClick(e)
-        console.log(categories.arr)
     })
     utils.clickFunction(submitBtn, function (e) {
         handleSubmit(e)
@@ -14,10 +13,9 @@ let categories = {
     arr: [],
     removeFromCategoriesArr (val) {
         let i = this.arr.indexOf(val)
-        if (i != -1) {
+        if (i !== -1) {
             this.arr.splice(i, 1)
         }
-        console.log(this.arr)
     }
 }
 function handleCategoryClick (e, categoriesArr) {
