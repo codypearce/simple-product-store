@@ -9,7 +9,8 @@ const express = require('express'),
     flash = require('connect-flash'),
     session = require('express-session'),
     passport = require('passport'),
-    LocalStrategy = require('passport-local').Strategy
+    LocalStrategy = require('passport-local').Strategy,
+    cookieParser = require('cookie-parser')
 
 var {mongoose} = require('./api/db/mongoose')
 
@@ -23,6 +24,7 @@ if (process.env.NODE_ENV === 'dev') {
 
 // Body Parser
 app.use(bodyParser.urlencoded({'extended': 'true'}))
+app.use(cookieParser())
 app.use(bodyParser.json())
 app.use(bodyParser.json({ type: 'application/vnd.api+json' }))
 app.use(methodOverride())
@@ -30,8 +32,7 @@ app.use(methodOverride())
 app.use(session({
     secret: 'thisismysecret',
     resave: false,
-    saveUninitialized: true,
-    cookie: { secure: true }
+    saveUninitialized: true
 }))
 app.use(flash())
 

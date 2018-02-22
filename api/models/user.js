@@ -3,18 +3,21 @@ const Schema = mongoose.Schema
 const bcrypt = require('bcryptjs')
 
 var userSchema = new Schema({
-    email: {
-        type: String,
-        required: true,
-        trim: true,
-        minLength: 1,
-        unique: true
-    },
-    password: {
-        type: String,
-        required: true,
-        minLength: 4
+    local: {
+        email: {
+            type: String,
+            required: true,
+            trim: true,
+            minLength: 1,
+            unique: true
+        },
+        password: {
+            type: String,
+            required: true,
+            minLength: 4
+        }
     }
+
 }, {
     timestamps: true
 })
@@ -24,6 +27,7 @@ userSchema.methods.generateHash = function (password) {
 }
 
 userSchema.methods.validPassword = function (password) {
+    console.log('test password')
     return bcrypt.compareSync(password, this.local.password)
 }
 

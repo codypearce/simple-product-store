@@ -99,12 +99,12 @@ module.exports = function (app, passport) {
     })
 
     app.post('/admin/signup', passport.authenticate('local-signup', {
-        successRedirect: '/admin/',
+        successRedirect: '/admin',
         failureRedirect: '/signup',
         failureFlash: true
     }))
     app.post('/admin/login', passport.authenticate('local-login', {
-        successRedirect: '/admin/',
+        successRedirect: '/admin',
         failureRedirect: '/login',
         failureFlash: true
     }))
@@ -220,6 +220,7 @@ function limitText (arr, amount) {
 }
 
 function isLoggedIn (req, res, next) {
+    console.log(req.isAuthenticated())
     if (req.isAuthenticated()) { return next() }
 
     res.redirect('/')

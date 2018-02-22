@@ -20,7 +20,7 @@ module.exports = function (passport) {
     },
     function (req, email, password, done) {
         process.nextTick(function () {
-            User.findOne({ 'email': email }, function (err, user) {
+            User.findOne({ 'local.email': email }, function (err, user) {
                 if (err) { return done(err) }
 
                 if (user) {
@@ -28,9 +28,9 @@ module.exports = function (passport) {
                 } else {
                     var newUser = new User()
 
-                    newUser.email = email
-                    newUser.password = newUser.generateHash(password)
-
+                    newUser.local.email = email
+                    newUser.local.password = newUser.generateHash(password)
+                    console.log('NEW USER:', newUser)
                     // save the user
                     newUser.save(function (err) {
                         if (err) { throw err }
@@ -47,6 +47,8 @@ module.exports = function (passport) {
     },
     function (req, email, password, done) {
         User.findOne({ 'local.email': email }, function (err, user) {
+            console.log('err', err)
+            console.log('test', user)
             if (err) { return done(err) }
 
             if (!user) { return done(null, false, req.flash('loginMessage', 'No user found.')) }

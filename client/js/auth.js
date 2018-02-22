@@ -8,11 +8,11 @@ window.onload = function () {
 }
 
 function login () {
-    utils.fetchPostForm(['email', 'password'], '/admin/login', '/admin')
+    utils.fetchPostForm(['email', 'password'], '/admin/login')
 }
 
 function signup () {
-    utils.fetchPostForm(['email', 'password'], '/admin/users', '/admin')
+    utils.fetchPostForm(['email', 'password'], '/admin/signup')
 }
 
 function addUser () {
