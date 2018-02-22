@@ -28,6 +28,7 @@ const utils = {
         fetch(route, {
             method: 'POST',
             body: JSON.stringify(formData),
+            credentials: 'include',
             headers: new Headers({
                 'Content-Type': 'application/json'
             })
