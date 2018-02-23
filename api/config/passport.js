@@ -47,8 +47,6 @@ module.exports = function (passport) {
     },
     function (req, email, password, done) {
         User.findOne({ 'local.email': email }, function (err, user) {
-            console.log('err', err)
-            console.log('test', user)
             if (err) { return done(err) }
 
             if (!user) { return done(null, false, req.flash('loginMessage', 'No user found.')) }
