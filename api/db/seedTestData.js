@@ -27,24 +27,24 @@ const testUser = {
     }]
 }
 
-const populateProducts =  function(done) {
+const populateProducts = function (done) {
     Product.create({
         title: starterData.title,
         slug: starterData.slug,
         price: starterData.price,
         externalLink: starterData.externalLink,
         description: starterData.description
-    }, function(err, product) {
+    }, function (err, product) {
         done()
     })
 }
 
-const populateUsers =  function(done) {
+const populateUsers = function (done) {
     User.create({
         email: testUser.title,
         password: testUser.password,
-        tokens: testUser.tokens,
-    }, function(err, product) {
+        tokens: testUser.tokens
+    }, function (err, product) {
         done()
     })
 }

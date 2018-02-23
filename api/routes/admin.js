@@ -70,15 +70,18 @@ module.exports = function (app, passport) {
     // Add user
     app.post('/admin/users/add', isLoggedIn, function (req, res) {
         var body = req.body
+        console.log(body)
         User.create({
-            email: body.email,
-            password: body.password
+            local: {
+                email: body.email,
+                password: body.password
+            }
         }, function (err, user) {
             if (err) {
                 console.log(err)
                 return res.sendStatus(400)
             }
-
+            console.log('USER', user)
             res.render('admin/users')
         })
     })
