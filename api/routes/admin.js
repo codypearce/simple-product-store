@@ -68,23 +68,11 @@ module.exports = function (app, passport) {
     })
 
     // Add user
-    app.post('/admin/users/add', isLoggedIn, function (req, res) {
-        var body = req.body
-        console.log(body)
-        User.create({
-            local: {
-                email: body.email,
-                password: body.password
-            }
-        }, function (err, user) {
-            if (err) {
-                console.log(err)
-                return res.sendStatus(400)
-            }
-            console.log('USER', user)
-            res.render('admin/users')
-        })
-    })
+    app.post('/admin/users/add', passport.authenticate('local-signup', {
+        successRedirect: '/admin',
+        failureRedirect: '/signup',
+        failureFlash: true
+    }))
 
     // Get User page
     app.get('/admin/users/add', isLoggedIn, (req, res) => {
