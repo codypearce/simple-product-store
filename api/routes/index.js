@@ -8,7 +8,7 @@ module.exports = function (app, passport) {
             let sorted = products.sort(function (a, b) {
                 return new Date(b.createdAt) - new Date(a.createdAt)
             })
-
+            console.log(req.user)
             res.render('index', { products: sorted })
         })
     })

@@ -4,9 +4,12 @@ block title
 	h2 Product Store
 
 block links
-	a(href="/admin/signup" class="link") Signup
-	a(href="/admin/login" class="link") Login
-	a(href="/admin" class="link") Admin
+	if user
+		a(href="/admin" class="link") Admin
+	else
+		a(href="/admin/signup" class="link") Signup
+		a(href="/admin/login" class="link") Login
+	
 	
 block content
 	.submenu.container

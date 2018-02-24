@@ -69,7 +69,7 @@ module.exports = function (app, passport) {
 
     // Add user
     app.post('/admin/users/add', passport.authenticate('local-signup', {
-        successRedirect: '/admin',
+        successRedirect: '/admin/users',
         failureRedirect: '/signup',
         failureFlash: true
     }))

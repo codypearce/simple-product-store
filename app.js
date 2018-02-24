@@ -40,7 +40,11 @@ app.use(flash())
 app.use(passport.initialize())
 app.use(passport.session())
 require('./api/config/passport')(passport)
-
+app.use(function (req, res, next) {
+    res.locals.login = req.isAuthenticated()
+    res.locals.user = req.user
+    next()
+})
 // View Engine
 app.set('view engine', 'pug')
 
