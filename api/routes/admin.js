@@ -84,9 +84,12 @@ module.exports = function (app, passport) {
     })
 
     // Get Profile details
-    app.get('/admin/users/profile', isLoggedIn, (req, res) => {
-        console.log(req.user)
-        res.send(req.user)
+    app.get('/admin/user/profile/:userId', isLoggedIn, (req, res) => {
+        User.findOne({ '_id': req.params.userId }, function (err, user) {
+            if (err) { throw err }
+
+            res.render('admin/profile', {user: user})
+        })
     })
 
     app.post('/admin/signup', passport.authenticate('local-signup', {

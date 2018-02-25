@@ -1,0 +1,27 @@
+extends ./layout
+
+block links
+	a(href="/admin" class="link") Products
+	a(href="/admin/users" class="link")  Users
+	a(href="/admin/user/profile/"+ user._id class="link").link-active Profile
+	a(href="/admin/logout" class="link") Logout
+	
+block content
+	div(class="d-flex justify-content-between align-items-baseline mb-4")
+		span.d-flex.flex-row.align-items-baseline
+			h3 Profile
+	hr.mb-5
+	div(class="my-4 d-flex flex-row justify-content-between")
+		div(class="")
+			div(class="d-flex flex-row align-items-center")
+				h2 #{user.local.email}
+		div(class="")
+			button(data-toggle="modal" data-target="#deleteModal" class="btn btn-outline-danger") Delete
+			#deleteModal.modal.fade(tabindex="-1" role="dialog" aria-labelledby="deleteModal" aria-hidden="true")
+				.modal-dialog(role="document")
+					.modal-content
+						.modal-body
+							| Are you sure you want to delete this user?
+						.modal-footer
+							button.btn.btn-secondary(type="button" data-dismiss="modal") Close
+							a.btn.btn-danger(href="/admin/users/delete/" + user._id) Delete User

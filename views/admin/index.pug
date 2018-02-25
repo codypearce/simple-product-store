@@ -3,7 +3,7 @@ extends ./layout
 block links
 	a(href="/admin" class="link").link-active Products
 	a(href="/admin/users" class="link") Users
-	a(href="/admin/user/profile" class="link") Profile
+	a(href="/admin/user/profile/"+ user._id class="link") Profile
 	a(href="/admin/logout" class="link") Logout
 
 block content
