@@ -14,11 +14,14 @@ block content
 		a(href="/admin/users/add" class="btn btn-outline-primary") Add
 	hr.mb-5
 	if users.length > 0
-		each user in users
+		each usern in users
 			div(class="my-4 d-flex flex-row justify-content-between")
 				div(class="")
 					div(class="d-flex flex-row align-items-center")
-						h2 #{user.local.email}
+						if usern.local.email == user.local.email
+							h2 #{usern.local.email} (you)
+						else
+							h2 #{usern.local.email}
 				div(class="")
 					button(data-toggle="modal" data-target="#deleteModal" class="btn btn-outline-danger") Delete
 					#deleteModal.modal.fade(tabindex="-1" role="dialog" aria-labelledby="deleteModal" aria-hidden="true")
@@ -28,4 +31,4 @@ block content
 									| Are you sure you want to delete this user?
 								.modal-footer
 									button.btn.btn-secondary(type="button" data-dismiss="modal") Close
-									a.btn.btn-danger(href="/admin/users/delete/" + user._id) Delete User
+									a.btn.btn-danger(href="/admin/users/delete/" + usern._id) Delete User
