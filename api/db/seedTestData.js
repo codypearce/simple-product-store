@@ -1,7 +1,5 @@
 const Product = require('../models/product')
 const User = require('../models/user')
-const jwt = require('jsonwebtoken')
-const {JWT_SECRET} = require('../config/config.json')
 
 const testProduct = {
     title: 'test',
@@ -20,11 +18,7 @@ const starterData = {
 
 const testUser = {
     email: 'test@gmail.com',
-    password: 'test123',
-    tokens: [{
-        access: 'auth',
-        token: jwt.sign({password: 'test123', access: JWT_SECRET}, 'test').toString()
-    }]
+    password: 'test123'
 }
 
 const populateProducts = function (done) {

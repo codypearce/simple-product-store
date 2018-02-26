@@ -2,6 +2,7 @@ const express = require('express')
 const Product = require('../models/product')
 const User = require('../models/user')
 const path = require('path')
+const {isLoggedIn, limitText} = require('./utils')
 
 var multer = require('multer')
 var dest = 'client/productImages/'
@@ -204,17 +205,4 @@ module.exports = function (app, passport) {
             res.redirect('/admin')
         })
     })
-}
-function limitText (arr, amount) {
-    arr.forEach(function (product) {
-        if (product.description.length > amount) {
-            product.description = product.description.substring(0, amount).trim() + '...'
-        }
-    })
-}
-
-function isLoggedIn (req, res, next) {
-    if (req.isAuthenticated()) { return next() }
-
-    res.redirect('/')
 }
