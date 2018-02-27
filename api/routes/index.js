@@ -27,4 +27,5 @@ module.exports = function (app, passport) {
     })
 
     require('./admin')(app, passport)
+    require('./adminUsers')(app, passport)
 }
