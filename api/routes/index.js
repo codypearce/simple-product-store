@@ -29,4 +29,5 @@ module.exports = function (app, passport) {
     require('./admin')(app, passport)
     require('./adminUsers')(app, passport)
     require('./auth')(app, passport)
+    require('./products')(app, passport)
 }
