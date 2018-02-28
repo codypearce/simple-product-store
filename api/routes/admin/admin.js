@@ -1,6 +1,6 @@
-const Product = require('../models/product')
+const Product = require('../../models/product')
 
-const {isLoggedIn, limitText} = require('./utils')
+const {isLoggedIn, limitText} = require('../utils')
 
 module.exports = function (app, passport) {
     app.get('/admin', isLoggedIn, function (req, res) {

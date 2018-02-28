@@ -1,7 +1,7 @@
-const Product = require('../models/product')
+const Product = require('../../models/product')
 
-const {upload} = require('./uploadFiles')
-const {isLoggedIn} = require('./utils')
+const {upload} = require('../uploadFiles')
+const {isLoggedIn} = require('../utils')
 
 module.exports = function (app, passport) {
     app.get('/admin/products', isLoggedIn, function (req, res) {

@@ -1,5 +1,5 @@
-const User = require('../models/user')
-const {isLoggedIn} = require('./utils')
+const User = require('../../models/user')
+const {isLoggedIn} = require('../utils')
 
 module.exports = function (app, passport) {
     // Get User page
