@@ -16,7 +16,6 @@ module.exports = function (app, passport) {
     })
 
     app.post('/admin/products', isLoggedIn, function (req, res) {
-        console.log('Test')
         let imgName
         upload(req, res, (err) => {
             if (err) {
@@ -52,7 +51,7 @@ module.exports = function (app, passport) {
         Product.findById(req.params.productID, (err, product) => {
             if (err) res.send(err)
 
-            res.render('admin/edit', {product: product})
+            res.render('admin/products/edit', {product: product})
         })
     })
 

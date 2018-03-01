@@ -7,7 +7,7 @@ module.exports = function (app, passport) {
         User.find((err, users) => {
             if (err) res.send(err)
 
-            res.render('admin/users', {
+            res.render('admin/users/users', {
                 users: users
             })
         })
@@ -25,7 +25,7 @@ module.exports = function (app, passport) {
         User.find((err, users) => {
             if (err) res.send(err)
 
-            res.render('admin/addUser')
+            res.render('admin/users/addUser')
         })
     })
 
@@ -34,7 +34,7 @@ module.exports = function (app, passport) {
         User.findOne({ '_id': req.params.userId }, function (err, user) {
             if (err) { throw err }
 
-            res.render('admin/profile', {user: user})
+            res.render('admin/users/profile', {user: user})
         })
     })
 

@@ -1,10 +1,10 @@
 
 module.exports = function (app, passport) {
     app.get('/admin/login', function (req, res) {
-        res.render('admin/login')
+        res.render('admin/auth/login')
     })
     app.get('/admin/signup', function (req, res) {
-        res.render('admin/signup')
+        res.render('admin/auth/signup')
     })
 
     app.post('/admin/signup', passport.authenticate('local-signup', {
