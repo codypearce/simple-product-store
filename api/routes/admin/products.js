@@ -16,6 +16,7 @@ module.exports = function (app, passport) {
     })
 
     app.post('/admin/products', isLoggedIn, function (req, res) {
+        console.log('Test')
         let imgName
         upload(req, res, (err) => {
             if (err) {
@@ -29,10 +30,12 @@ module.exports = function (app, passport) {
                     slug: req.body.slug,
                     price: req.body.price,
                     externalLink: req.body.externalLink,
+                    categories: req.body.categories,
                     imgLink: imgName,
                     description: req.body.description
                 }, function (err, product) {
                     if (err) {
+                        console.log(err)
                         return res.status(400).send(err)
                     }
                     return res.send(product)
@@ -69,6 +72,7 @@ module.exports = function (app, passport) {
                     slug: req.body.slug,
                     price: req.body.price,
                     externalLink: req.body.externalLink,
+                    categories: req.body.categories,
                     imgLink: imgName,
                     description: req.body.description
                 }, function (err, product) {

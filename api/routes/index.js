@@ -6,5 +6,5 @@ module.exports = function (app, passport) {
     require('./admin/products')(app, passport)
 
     // External
-    require('./external/index')
+    require('./external/index')(app, passport)
 }
