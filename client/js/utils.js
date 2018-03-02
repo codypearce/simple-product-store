@@ -33,7 +33,7 @@ const utils = {
                 'Content-Type': 'application/json'
             })
         })
-            .then(res => redirect ? window.location.href = '/admin' : console.log('success'))
+            .then(res => redirect ? window.location.href = redirect : console.log('success'))
             .catch(error => console.error('Error', error))
     }
 }

@@ -44,7 +44,7 @@ module.exports = function (app, passport) {
     })
 
     app.get('/admin/product/add', isLoggedIn, function (req, res) {
-        res.render('admin/add')
+        res.render('admin/products/add')
     })
 
     app.get('/admin/product/edit/:productID', isLoggedIn, (req, res) => {
