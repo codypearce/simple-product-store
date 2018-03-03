@@ -11,12 +11,11 @@ block content
 		span.d-flex.flex-row.align-items-baseline
 			h3 Profile
 	hr.mb-5
-	div(class="my-4 d-flex flex-row justify-content-between")
+	div(class="my-4 d-flex flex-column justify-content-between align-items-center")
 		div(class="")
-			div(class="d-flex flex-row align-items-center")
 				h2 #{user.local.email}
-		div(class="")
-			button(data-toggle="modal" data-target="#deleteModal" class="btn btn-outline-danger") Delete
+		div(class="mt-4")
+			button(data-toggle="modal" data-target="#deleteModal" class="btn btn-outline-danger") Delete My Account
 			#deleteModal.modal.fade(tabindex="-1" role="dialog" aria-labelledby="deleteModal" aria-hidden="true")
 				.modal-dialog(role="document")
 					.modal-content
