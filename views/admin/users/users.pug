@@ -4,7 +4,7 @@ block links
 	a(href="/admin" class="link") Products
 	a(href="/admin/users" class="link").link-active  Users
 	a(href="/admin/user/profile/"+ user._id class="link") Profile
-	a(href="/admin/logout" class="link") Logout
+	a(data-toggle="modal" data-target="#logoutModal" class="link") Logout
 	
 block content
 	div(class="d-flex justify-content-between align-items-baseline mb-4")
