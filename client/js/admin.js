@@ -41,7 +41,7 @@ function handleSubmit (e) {
     if (errorsExist()) {
         createError(e.target, 'Please fix the errors above before submitting')
     } else {
-        utils.fetchPostForm(['title', 'slug', 'price', 'externalLink', 'description', 'categories'], '/admin/products', '/admin')
+        utils.fetchPostForm(['title', 'slug', 'price', 'externalLink', 'description'], '/admin/products', '/admin', categories.arr)
     }
 }
 function addCategoryToView (categoriesArr) {

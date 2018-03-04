@@ -22,9 +22,11 @@ const utils = {
             })
         }
     },
-    fetchPostForm (formParams, route, redirect) {
+    fetchPostForm (formParams, route, redirect, categories) {
         var formData = this.getFormData(...formParams)
-
+        if (categories) {
+            formData.categories = categories
+        }
         fetch(route, {
             method: 'POST',
             body: JSON.stringify(formData),
