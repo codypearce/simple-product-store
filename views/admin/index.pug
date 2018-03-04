@@ -36,11 +36,4 @@ block content
 	else
 		div(class="d-flex justify-content-center align-items-center")
 			p(class="text-muted") You don't have any products!
-	#logoutModal.modal.fade(tabindex="-1" role="dialog" aria-labelledby="logoutModal" aria-hidden="true")
-		.modal-dialog(role="document")
-			.modal-content
-				.modal-body
-					| Are you sure you want logout?
-				.modal-footer
-					button.btn.btn-secondary(type="button" data-dismiss="modal") Close
-					a.btn.btn-danger(href="/admin/logout") Logout
+	include ../shared/logoutModal
