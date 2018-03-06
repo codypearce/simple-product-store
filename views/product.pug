@@ -16,11 +16,14 @@ block content
 							img(src='/productImages/' + product.imgLink)
 					else
 						.product-box
-				.col-6
+				.col-6.flex-column.d-flex.justify-content-between
 					.row.d-flex.justify-content-between.align-items-center
 						h3 Price
 						h2 $#{product.price}
-					.row.mt-3
+					.row.mt-3.d-flex.justify-content-between.align-items-center
+						.categories 
+							for category in product.categories
+								.category-link #{category}
 						a(class="btn btn-outline-primary" href=product.externalLink) Buy
 			.row.mt-5
 				.col-12
