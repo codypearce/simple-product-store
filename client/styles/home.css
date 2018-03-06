@@ -21,6 +21,15 @@
 }
 .product_price {
 	font-size: 14px;
+	color: green;
+}
+.product_price--display {
+	color: green;
+}
+.product_description {
+	max-width: 75ch;
+	word-wrap: break-word;
+	margin: 100px auto;
 }
 
 .submenu {
