@@ -21,7 +21,7 @@ module.exports = function (app, passport) {
             }
             if (err) res.status(400).send(err)
 
-            res.render('product', {product: product})
+            res.render('product', {product})
         })
     })
 }

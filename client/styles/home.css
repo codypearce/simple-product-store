@@ -32,6 +32,10 @@
 	margin: 100px auto;
 }
 
+.pagination {
+	justify-content:center;
+}
+
 .submenu {
 	margin-top: 10px;
 }
