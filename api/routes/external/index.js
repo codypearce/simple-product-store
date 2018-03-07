@@ -2,15 +2,14 @@ const Product = require('../../models/product')
 
 module.exports = function (app, passport) {
     app.get('/', function (req, res) {
-        Product.find(function (err, products) {
-            if (err) res.send(err)
+        Product.find({})
+            .sort({'createdAt': -1})
+            .limit(20)
+            .exec(function (err, products) {
+                if (err) console.log(err)
 
-            let sorted = products.sort(function (a, b) {
-                return new Date(b.createdAt) - new Date(a.createdAt)
+                res.render('index', { products })
             })
-
-            res.render('index', { products: sorted })
-        })
     })
 
     app.get('/products/:slug', (req, res) => {
