@@ -36,11 +36,17 @@ block content
 			else
 				div(class="d-flex justify-content-center align-items-center")
 					p(class="text-muted") Sorry no products
-			nav(aria-label="Page navigation example")
-				ul.pagination
-					li.page-item
-						a(href="").page-link <
-					li.page-item
-						a(href="").page-link 1
-					li.page-item
-						a(href="").page-link >
+			if pages > 1
+				nav(aria-label="Page navigation example")
+					ul.pagination
+						li.page-item
+							a(href="").page-link <
+							
+						- var i = 0;
+						
+						while i <= pages
+							-i++
+							li.page-item
+								a(href="/?page=" + i).page-link #{i}
+						li.page-item
+							a(href="").page-link >
