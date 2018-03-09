@@ -15,7 +15,7 @@ module.exports = function (app, passport) {
                     res.render('index', {
                         products,
                         page: page,
-                        pages: count / perPage
+                        pages: Math.ceil(count / perPage)
                     })
                 })
             })

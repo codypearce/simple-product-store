@@ -20,6 +20,7 @@ block content
 			.category-link More...
 	main.mt-5
 		.container
+			h1 #{pages}
 			if products.length > 0
 				.row
 					each product in products
@@ -39,14 +40,16 @@ block content
 			if pages > 1
 				nav(aria-label="Page navigation example")
 					ul.pagination
-						li.page-item
-							a(href="").page-link <
+						unless page == 1	
+							li.page-item
+								a(href="/?page="+ (page - 1)).page-link <
 							
 						- var i = 0;
 						
-						while i <= pages
+						while i < pages
 							-i++
 							li.page-item
 								a(href="/?page=" + i).page-link #{i}
-						li.page-item
-							a(href="").page-link >
+						unless page == pages
+							li.page-item
+								a(href="/?page="+ (page + 1)).page-link >
