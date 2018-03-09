@@ -11,7 +11,9 @@ block content
 		span.d-flex.flex-row.align-items-baseline
 			h3 List of Products
 			small.ml-3 #{products.length} Products
-		a(href="/admin/product/add" class="btn btn-outline-primary") Add
+		span
+			a(href="/admin/product/add" class="btn btn-outline-primary") Add Product
+			a(href="/admin/product/settings" class="btn btn-outline-warning ml-3") Settings
 	hr.mb-5
 	if products.length > 0
 		each product in products
