@@ -1,24 +1,34 @@
 const Product = require('../../models/product')
+const Setting = require('../../models/setting')
 
 module.exports = function (app, passport) {
     app.get('/', function (req, res) {
-        let perPage = 6
-        let page = req.param('page') || 1
-        Product.find({})
-            .sort({'createdAt': -1})
-            .skip(perPage * (page - 1))
-            .limit(perPage)
-            .exec(function (err, products) {
-                if (err) console.log(err)
-                Product.count().exec(function (err, count) {
+        Setting.find({}, function (err, settings) {
+            if (err) console.log(err)
+            let perPage
+            settings.forEach(item => {
+                if (item.name === 'Products Per Page') {
+                    perPage = item.value
+                }
+            })
+            console.log(perPage)
+            let page = req.param('page') || 1
+            Product.find({})
+                .sort({'createdAt': -1})
+                .skip(perPage * (page - 1))
+                .limit(perPage)
+                .exec(function (err, products) {
                     if (err) console.log(err)
-                    res.render('index', {
-                        products,
-                        page: page,
-                        pages: Math.ceil(count / perPage)
+                    Product.count().exec(function (err, count) {
+                        if (err) console.log(err)
+                        res.render('index', {
+                            products,
+                            page: page,
+                            pages: Math.ceil(count / perPage)
+                        })
                     })
                 })
-            })
+        })
     })
 
     app.get('/products/:slug', (req, res) => {

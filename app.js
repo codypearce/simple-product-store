@@ -11,8 +11,7 @@ const express = require('express'),
     passport = require('passport'),
     LocalStrategy = require('passport-local').Strategy,
     cookieParser = require('cookie-parser'),
-
-var {mongoose} = require('./api/db/mongoose')
+    mongoose = require('./api/db/mongoose')
 
 // Static File
 app.use(express.static(`${__dirname}/client`))
@@ -45,7 +44,6 @@ app.use(function (req, res, next) {
     res.locals.user = req.user
     next()
 })
-
 // Seed data
 require('./api/db/seedData')
 
