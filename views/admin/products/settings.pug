@@ -1,0 +1,16 @@
+extends ../layout
+
+block links
+    a(href="/admin" class="link") Back to Admin
+    
+block content
+    h3(class="mb-4") Settings
+    h3 #{msg}
+    div(class="mt-5")
+        div(class="my-4 d-flex flex-row justify-content-between")
+            div(class="")
+                div(class="d-flex flex-row align-items-center")
+                    span.settings_name Products per Page
+                    input.form-control(type="number", aria-describedby="Products per page", placeholder="Per Page" name="perPage" required value=6)
+            div()
+                button(class="btn btn-edit btn-outline-warning") Update

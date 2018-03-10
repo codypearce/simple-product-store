@@ -4,6 +4,9 @@ const {upload} = require('../uploadFiles')
 const {isLoggedIn} = require('../utils')
 
 module.exports = function (app, passport) {
+    app.get('/admin/products/settings', isLoggedIn, function (req, res) {
+        res.render('admin/products/settings')
+    })
     app.get('/admin/products', isLoggedIn, function (req, res) {
         Product.find(function (err, products) {
             if (err) res.send(err)
