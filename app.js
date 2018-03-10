@@ -10,7 +10,7 @@ const express = require('express'),
     session = require('express-session'),
     passport = require('passport'),
     LocalStrategy = require('passport-local').Strategy,
-    cookieParser = require('cookie-parser')
+    cookieParser = require('cookie-parser'),
 
 var {mongoose} = require('./api/db/mongoose')
 
@@ -45,6 +45,10 @@ app.use(function (req, res, next) {
     res.locals.user = req.user
     next()
 })
+
+// Seed data
+require('./api/db/seedData')
+
 // View Engine
 app.set('view engine', 'pug')
 

@@ -1,9 +1,8 @@
 const Product = require('../../models/product')
-const Settings = require('../../config/settings')
 
 module.exports = function (app, passport) {
     app.get('/', function (req, res) {
-        let perPage = Settings.productsPerPage
+        let perPage = 6
         let page = req.param('page') || 1
         Product.find({})
             .sort({'createdAt': -1})
