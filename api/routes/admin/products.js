@@ -2,10 +2,15 @@ const Product = require('../../models/product')
 
 const {upload} = require('../uploadFiles')
 const {isLoggedIn} = require('../utils')
+const Setting = require('../../models/setting')
 
 module.exports = function (app, passport) {
     app.get('/admin/products/settings', isLoggedIn, function (req, res) {
-        res.render('admin/products/settings')
+        Setting.find(function (err, settings) {
+            if (err) console.log(err)
+
+            res.render('admin/products/settings', {settings})
+        })
     })
     app.get('/admin/products', isLoggedIn, function (req, res) {
         Product.find(function (err, products) {
