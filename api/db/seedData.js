@@ -2,7 +2,8 @@ const Setting = require('../models/setting')
 
 const settings = [
     {
-        name: 'Products Per Page',
+        humanName: 'Products Per Page',
+        name: 'productsPerPage',
         value: 6
     }
 ]

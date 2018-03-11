@@ -7,11 +7,11 @@ module.exports = function (app, passport) {
             if (err) console.log(err)
             let perPage
             settings.forEach(item => {
-                if (item.name === 'Products Per Page') {
+                if (item.humanName === 'Products Per Page') {
                     perPage = item.value
                 }
             })
-            console.log(perPage)
+
             let page = req.param('page') || 1
             Product.find({})
                 .sort({'createdAt': -1})
