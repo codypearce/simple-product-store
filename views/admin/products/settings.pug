@@ -7,11 +7,10 @@ block content
     h3(class="mb-4") Settings
     h3 #{msg}
     div(class="mt-5")
-        div(class="my-4 d-flex flex-row justify-content-between")
-            for setting in settings
-                div(class="")
-                    div(class="d-flex flex-row align-items-center")
-                        span.settings_name #{settings.humanName}
-                        input.form-control(type="number", aria-describedby=settings.humanName placeholder=settings.humanName name=settings.name required value=setting.value)
+        for setting in settings
+            form(action="/admin/products/settings/update/" + setting._id method="post" class="my-4 d-flex flex-row justify-content-between") 
+                div(class="d-flex flex-row align-items-center")
+                    span.settings_name #{setting.humanName}
+                    input.form-control(type="number", aria-describedby=setting.humanName placeholder=setting.humanName name=setting._id required value=setting.value)
                 div()
-                    button(class="btn btn-edit btn-outline-warning") Update
+                    button(class="btn btn-edit btn-outline-warning" type=submit) Update

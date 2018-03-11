@@ -12,6 +12,19 @@ module.exports = function (app, passport) {
             res.render('admin/products/settings', {settings})
         })
     })
+    app.post('/admin/products/settings/update/:settingId', isLoggedIn, function (req, res) {
+        Setting.update({_id: req.params.settingId}, {
+            value: req.body[req.params.settingId]
+        }, function (err, setting) {
+            if (err) res.send(err)
+
+            Setting.find(function (err, settings) {
+                if (err) console.log(err)
+
+                res.render('admin/products/settings', {settings})
+            })
+        })
+    })
     app.get('/admin/products', isLoggedIn, function (req, res) {
         Product.find(function (err, products) {
             if (err) res.send(err)
