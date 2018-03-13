@@ -1,4 +1,8 @@
 
+hr {
+	height: 2px;
+}
+
 .link {
 	color: #333;
 	text-decoration: none;

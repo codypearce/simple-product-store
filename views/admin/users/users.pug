@@ -14,7 +14,9 @@ block content
 			h3 List of Users
 			small.ml-3 #{users.length} users
 		a(href="/admin/users/add" class="btn btn-outline-primary") Add
+		
 	hr.mb-5
+		
 	if users.length > 0
 		each usern in users
 			div(class="my-4 d-flex flex-row justify-content-between")

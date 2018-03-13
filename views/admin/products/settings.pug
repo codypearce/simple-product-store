@@ -6,6 +6,9 @@ block links
 block content
     h3(class="mb-4") Settings
     h3 #{msg}
+		
+    hr.mb-5
+        
     div(class="mt-5")
         for setting in settings
             form(action="/admin/products/settings/update/" + setting._id method="post" class="my-4 d-flex flex-row justify-content-between") 
