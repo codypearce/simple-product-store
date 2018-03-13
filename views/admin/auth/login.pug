@@ -3,16 +3,24 @@ extends ../layout
 
 block content
 	h3(class="mb-4").text-center Login
-	.d-flex.justify-content-center.row
-		.col-4
-			.form-group.input-container
-				input.form-control(type="text", aria-describedby="Email", placeholder="Email" name="email")
-	.d-flex.justify-content-center.row
-		.col-4
-			.form-group.input-container
-				input.form-control(type="password", aria-describedby="Password", placeholder="Password" name="password")
-	.d-flex.justify-content-center.row
-		button(class="btn btn-outline-success" type=submit id="loginBtn") Login		
+
+	form(action="/admin/login/" method="post") 
+		if message
+			.alert.alert-danger(role="alert")
+				span #{message}
+				button(type="button" class="close" data-dismiss="alert" aria-label="Close")
+					span(aria-hidden="true") &times;
+				
+		.d-flex.justify-content-center.row
+			.col-4
+				.form-group.input-container
+					input.form-control(type="text", aria-describedby="Email", placeholder="Email" name="email" required)
+		.d-flex.justify-content-center.row
+			.col-4
+				.form-group.input-container
+					input.form-control(type="password", aria-describedby="Password", placeholder="Password" name="password" required)
+		.d-flex.justify-content-center.row
+			button(class="btn btn-outline-success" type=submit) Login		
 
 block scripts
 	script(src="/js/utils.js")

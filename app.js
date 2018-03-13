@@ -31,7 +31,8 @@ app.use(methodOverride())
 app.use(session({
     secret: 'thisismysecret',
     resave: false,
-    saveUninitialized: true
+    saveUninitialized: true,
+    cookie: { secure: false }
 }))
 app.use(flash())
 

@@ -58,7 +58,6 @@ module.exports = function (app, passport) {
                         console.log(err)
                         return res.status(400).send(err)
                     }
-                    console.log(product)
                     return res.send(product)
                 })
             }
