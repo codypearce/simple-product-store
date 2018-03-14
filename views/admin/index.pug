@@ -40,4 +40,22 @@ block content
 	else
 		div(class="d-flex justify-content-center align-items-center")
 			p(class="text-muted") You don't have any products!
+			
+	if pages > 1
+		nav(aria-label="Page navigation")
+			ul.pagination
+				unless page == 1	
+					li.page-item
+						a(href="/?page="+ (page - 1)).page-link <
+					
+				- var i = 0;
+				
+				while i < pages
+					-i++
+					li.page-item
+						a(href="/?page=" + i).page-link #{i}
+				unless page == pages
+					li.page-item
+						a(href="/?page="+ (page + 1)).page-link >
+
 	include ../shared/logoutModal
