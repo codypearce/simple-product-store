@@ -43,4 +43,7 @@ module.exports = function (app, passport) {
             res.render('product', {product})
         })
     })
+    app.get('/error', (req, res) => {
+        res.render('error')
+    })
 }

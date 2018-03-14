@@ -9,7 +9,7 @@ function limitText (arr, amount) {
 function isLoggedIn (req, res, next) {
     if (req.isAuthenticated()) { return next() }
 
-    res.redirect('/')
+    res.render('error', {message: '403 Forbidden'})
 }
 
 module.exports = {
