@@ -14,7 +14,10 @@ block content
 		span
 			a(href="/admin/product/add" class="btn btn-outline-primary") Add Product
 			a(href="/admin/products/settings" class="btn btn-outline-warning ml-3") Settings
-	
+	div
+		form(action="/admin" method="GET" class="form-inline")
+			input.form-control(type="text", aria-describedby="search", placeholder="Search" name="search")
+			button( type="submit " class="btn btn-outline-success ml-2") Search
 	hr.mb-5
 		
 	if products.length > 0
