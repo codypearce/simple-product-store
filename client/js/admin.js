@@ -124,3 +124,15 @@ function deleteError (el) {
 function showSuccess (inputDiv) {
     inputDiv.classList.add('input--success')
 }
+
+function toggleCondensed () {
+    let adminDescription = document.getElementsByClassName('admin_description')
+    console.log(adminDescription)
+    for (var i = 0; i < adminDescription.length; i++) {
+        if (adminDescription[i].classList.contains('hidden')) {
+            adminDescription[i].classList.remove('hidden')
+        } else {
+            adminDescription[i].classList.add('hidden')
+        }
+    }
+}

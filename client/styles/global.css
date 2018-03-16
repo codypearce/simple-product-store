@@ -52,3 +52,7 @@ hr {
 .btn:hover {
 	cursor: pointer;
 }
+
+.hidden {
+	display: none;
+}

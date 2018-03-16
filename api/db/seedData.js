@@ -4,7 +4,7 @@ const settings = [
     {
         humanName: 'Products Per Page',
         name: 'productsPerPage',
-        value: 6
+        value: 20
     }
 ]
 
