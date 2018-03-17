@@ -58,7 +58,8 @@ module.exports = function (app, passport) {
                         console.log(err)
                         return res.status(400).send(err)
                     }
-                    return res.send(product)
+
+                    return res.redirect('/admin')
                 })
             }
         })
