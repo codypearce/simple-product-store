@@ -12,10 +12,10 @@ block content
 			.row
 				.col-6
 					if product.imgLink
-						.product-box
-							img(src='/productImages/' + product.imgLink)
+						.product-detail-box 
+							img(class="product-detail-box_img" src='/productImages/' + product.imgLink)
 					else
-						.product-box
+						.product-detail-box--noImage
 				.col-6.flex-column.d-flex.justify-content-between
 					.row.d-flex.justify-content-between.align-items-center
 						h3 Price
