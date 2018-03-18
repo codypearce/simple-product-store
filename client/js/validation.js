@@ -28,9 +28,17 @@ const validate = {
         }
         var parent = input.parentElement
         deleteErrorIfExists(parent, input)
+
         if (!val) {
-            createInputError(input, 'Please add a slug!')
-        } else {
+            return createInputError(input, 'Please add a slug!')
+        }
+        validate.checkSlug(input.value).then(res => {
+            if (res === true) {
+                return createInputError(input, 'Slug must be unique')
+            }
+        })
+
+        if (val) {
             showSuccess(input)
         }
         // Check if Unqiue
@@ -66,7 +74,7 @@ const validate = {
         deleteErrorIfExists(parent, input)
         if (!val) {
 
-        } else if (!validateUrl(val)) {
+        } else if (!validate.validateUrl(val)) {
             createInputError(input, 'Please input a valid url!')
         } else {
             showSuccess(input)
@@ -84,8 +92,6 @@ const validate = {
         deleteErrorIfExists(parent, input)
         if (!val) {
             createInputError(input, 'Please add a Description')
-        } else if (val.length < 50) {
-            createInputError(input, 'Please add a longer description')
         } else {
             showSuccess(input)
         }
@@ -93,6 +99,17 @@ const validate = {
     validateUrl (url) {
         var testUrl = url.match(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g)
         return testUrl != null
+    },
+    checkSlug (slug) {
+        return fetch('/admin/products/slug/' + slug, {
+            method: 'GET',
+            credentials: 'include'
+        })
+            .then(res => res.json())
+            .then(res => {
+                return res
+            })
+            .catch(error => console.error('Error', error))
     }
 
 }

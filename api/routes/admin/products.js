@@ -114,4 +114,16 @@ module.exports = function (app, passport) {
             res.redirect('/admin')
         })
     })
+
+    app.get('/admin/products/slug/:slug', isLoggedIn, function (req, res) {
+        Product.findOne({slug: req.params.slug}, (err, product) => {
+            if (err) res.send(err)
+            console.log(product)
+            if (product) {
+                res.send(true)
+            } else {
+                res.send(false)
+            }
+        })
+    })
 }

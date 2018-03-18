@@ -1,9 +1,9 @@
 window.onload = function () {
     let submitBtn = document.getElementById('submitBtn')
-    let catInput = utils.getInput('categories')
-    catInput.addEventListener('keypress', function (e) {
-        handleCategoryClick(e)
-    })
+    // let catInput = utils.getInput('categories')
+    // catInput.addEventListener('keypress', function (e) {
+    //     handleCategoryClick(e)
+    // })
     utils.clickFunction(submitBtn, function (e) {
         handleSubmit(e)
     })
@@ -127,7 +127,7 @@ function showSuccess (inputDiv) {
 
 function toggleCondensed () {
     let adminDescription = document.getElementsByClassName('admin_description')
-    console.log(adminDescription)
+
     for (var i = 0; i < adminDescription.length; i++) {
         if (adminDescription[i].classList.contains('hidden')) {
             adminDescription[i].classList.remove('hidden')

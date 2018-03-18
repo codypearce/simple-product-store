@@ -39,7 +39,7 @@ module.exports = function (app, passport) {
                 res.status.send(404)
             }
             if (err) res.status(400).send(err)
-            console.log(product)
+
             res.render('product', {product})
         })
     })
