@@ -83,6 +83,9 @@ function setUpValidation () {
     utils.addBlur(utils.getInput('price'), validate.priceValidation)
     utils.addBlur(utils.getInput('externalLink'), validate.externalLinkValidation)
     utils.addBlur(utils.getInput('description'), validate.descriptionValidation)
+    utils.addBlur(utils.getInput('email'), validate.basicValidation)
+    utils.addBlur(utils.getInput('password'), validate.basicValidation)
+    console.log('test')
 }
 
 function checkForm () {

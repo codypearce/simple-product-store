@@ -1,5 +1,22 @@
 const validate = {
+    basicValidation (e, input) {
+        var val
+        if (e) {
+            var input = e.target
 
+            val = input.value
+        } else {
+            val = input.value
+        }
+        var parent = input.parentElement
+        deleteErrorIfExists(parent, input)
+
+        if (!val) {
+            createInputError(input, 'This is required')
+        } else {
+            showSuccess(input)
+        }
+    },
     titleValidation (e, input) {
         var val
         if (e) {

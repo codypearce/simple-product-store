@@ -14,14 +14,16 @@ block content
 		.d-flex.justify-content-center.row
 			.col-4
 				.form-group.input-container
-					input.form-control(type="text", aria-describedby="Email", placeholder="Email" name="email" required)
+					input.form-control(type="text", aria-describedby="Email", placeholder="Email" name="email")
 		.d-flex.justify-content-center.row
 			.col-4
 				.form-group.input-container
-					input.form-control(type="password", aria-describedby="Password", placeholder="Password" name="password" required)
+					input.form-control(type="password", aria-describedby="Password", placeholder="Password" name="password")
 		.d-flex.justify-content-center.row
 			button(class="btn btn-outline-success" type=submit) Login		
 
 block scripts
 	script(src="/js/utils.js")
+	script(src="/js/validation.js")
+	script(src="/js/admin.js")
 	script(src="/js/auth.js")
