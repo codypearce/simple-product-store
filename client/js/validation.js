@@ -74,8 +74,7 @@ const validate = {
         if (!val) {
             createInputError(input, 'Please add a price!')
         } else if (isNaN(val)) {
-            val = '',
-            createInputError(input, 'Only numbers!')
+            (val = ''), createInputError(input, 'Only numbers!')
         } else {
             showSuccess(input)
         }
@@ -91,7 +90,6 @@ const validate = {
         var parent = input.parentElement
         deleteErrorIfExists(parent, input)
         if (!val) {
-
         } else if (!validate.validateUrl(val)) {
             createInputError(input, 'Please input a valid url!')
         } else {
@@ -115,7 +113,9 @@ const validate = {
         }
     },
     validateUrl (url) {
-        var testUrl = url.match(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g)
+        var testUrl = url.match(
+            /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g
+        )
         return testUrl != null
     },
     checkSlug (slug) {
@@ -130,12 +130,13 @@ const validate = {
             .catch(error => console.error('Error', error))
     },
     slugify (text) {
-        return text.toString().toLowerCase()
+        return text
+            .toString()
+            .toLowerCase()
             .replace(/\s+/g, '-') // Replace spaces with -
             .replace(/[^\w\-]+/g, '') // Remove all non-word chars
             .replace(/\-\-+/g, '-') // Replace multiple - with single -
             .replace(/^-+/, '') // Trim - from start of text
             .replace(/-+$/, '') // Trim - from end of text
     }
-
 }

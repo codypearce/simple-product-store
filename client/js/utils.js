@@ -7,13 +7,13 @@ const utils = {
     },
     getFormData (...fields) {
         var obj = {}
-        fields.forEach((field) => {
+        fields.forEach(field => {
             obj[field] = this.getVal(field)
         })
         return obj
     },
     addBlur (el, validateFunction) {
-        return el.addEventListener('blur', (e) => validateFunction(e))
+        return el.addEventListener('blur', e => validateFunction(e))
     },
     clickFunction (el, cb) {
         if (el) {
@@ -35,7 +35,12 @@ const utils = {
                 'Content-Type': 'application/json'
             })
         })
-            .then(res => redirect ? window.location.href = redirect : console.log('success'))
+            .then(
+                res =>
+                    redirect
+                        ? (window.location.href = redirect)
+                        : console.log('success')
+            )
             .catch(error => console.error('Error', error))
     }
 }

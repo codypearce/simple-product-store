@@ -6,5 +6,9 @@ window.onload = function () {
 }
 
 function addUser () {
-    utils.fetchPostForm(['email', 'password'], '/admin/users/add', '/admin/users')
+    utils.fetchPostForm(
+        ['email', 'password'],
+        '/admin/users/add',
+        '/admin/users'
+    )
 }

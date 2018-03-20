@@ -1,7 +1,11 @@
 window.onload = function () {
     let submitBtn = document.getElementById('submitBtn')
+    let condenseBtn = document.getElementById('condenseBtn')
     utils.clickFunction(submitBtn, function (e) {
         handleSubmit(e)
+    })
+    utils.clickFunction(condenseBtn, function (e) {
+        toggleCondensed()
     })
     setUpValidation()
 }
@@ -16,10 +20,14 @@ function handleSubmit (e) {
     if (errorsExist()) {
         createError(e.target, 'Please fix the errors above before submitting')
     } else {
-        utils.fetchPostForm(['title', 'slug', 'price', 'externalLink', 'description'], '/admin/products', '/admin', categories.arr)
+        utils.fetchPostForm(
+            ['title', 'slug', 'price', 'externalLink', 'description'],
+            '/admin/products',
+            '/admin',
+            categories.arr
+        )
     }
 }
-
 
 function errorsExist () {
     var errors = document.querySelectorAll('.error')
@@ -35,8 +43,14 @@ function setUpValidation () {
     utils.addBlur(utils.getInput('title'), validate.titleValidation)
     utils.addBlur(utils.getInput('slug'), validate.slugValidation)
     utils.addBlur(utils.getInput('price'), validate.priceValidation)
-    utils.addBlur(utils.getInput('externalLink'), validate.externalLinkValidation)
-    utils.addBlur(utils.getInput('description'), validate.descriptionValidation)x
+    utils.addBlur(
+        utils.getInput('externalLink'),
+        validate.externalLinkValidation
+    )
+    utils.addBlur(
+        utils.getInput('description'),
+        validate.descriptionValidation
+    )
 }
 
 function checkForm () {
