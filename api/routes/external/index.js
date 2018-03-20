@@ -14,11 +14,12 @@ module.exports = function (app, passport) {
 
             let page = req.param('page') || 1
             Product.find({})
-                .sort({'createdAt': -1})
+                .sort({ createdAt: -1 })
                 .skip(perPage * (page - 1))
                 .limit(perPage)
                 .exec(function (err, products) {
                     if (err) console.log(err)
+
                     Product.count().exec(function (err, count) {
                         if (err) console.log(err)
                         res.render('index', {
@@ -32,16 +33,19 @@ module.exports = function (app, passport) {
     })
 
     app.get('/products/:slug', (req, res) => {
-        Product.findOne({
-            slug: req.params.slug
-        }, (err, product) => {
-            if (!product) {
-                res.status.send(404)
-            }
-            if (err) res.status(400).send(err)
+        Product.findOne(
+            {
+                slug: req.params.slug
+            },
+            (err, product) => {
+                if (!product) {
+                    res.status.send(404)
+                }
+                if (err) res.status(400).send(err)
 
-            res.render('product', {product})
-        })
+                res.render('product', { product })
+            }
+        )
     })
     app.get('/error', (req, res) => {
         res.render('error')

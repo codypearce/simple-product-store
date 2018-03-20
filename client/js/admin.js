@@ -23,8 +23,7 @@ function handleSubmit (e) {
         utils.fetchPostForm(
             ['title', 'slug', 'price', 'externalLink', 'description'],
             '/admin/products',
-            '/admin',
-            categories.arr
+            '/admin'
         )
     }
 }
